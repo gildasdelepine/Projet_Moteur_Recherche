@@ -1,0 +1,345 @@
+/*** CSS pour la page en general ***/
+body { 
+	background: #000000; 
+	margin:0; 
+	padding:0; 
+	line-height:16px; 
+	font-size:14px; 
+	font-family: Arial, Tahoma;
+}
+	
+a { 
+	color:#fe5800;
+	text-decoration:none;
+	font-weight: bold;
+}
+
+
+h1 {
+	margin:20px auto 20px auto;
+	font-size: 22px;
+	font-weight: bold;
+	text-align: center;
+}
+
+h2 {
+	margin: 25px;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+p {
+	margin-bottom: 10px;
+} 
+/*** CSS general ***/
+
+
+
+/*** header ***/
+#header { 
+	width:100%;
+	min-width: 800px;
+	background: url(images/header_bckg.gif) repeat-x ; 
+	height:120px;  
+}
+
+#title { 
+	width:800px; 
+	margin:0 auto; 
+	padding:50px 0 0 0px; 
+}
+
+#header_left{ 
+	color:#FFFFFF; 
+	text-decoration:none; 
+	font-weight:bold; 
+	height:12px; 
+	font-size:20px; 
+	padding: 0 0 0 70px; 
+}
+
+#headImg{
+	float: right;
+	height: 150px;
+	margin: 25px 25px 0 0;
+	padding: 0px;
+}
+
+#header_right{ 
+	float: right; 
+	color:#fe5800; 
+	text-align:right; 
+	font-size:13px; 
+	padding: 0 80px 0 0; 
+}
+
+
+#menu {
+	min-width:800px;
+	color:#fff; 
+	text-align:center; 
+	margin:26px auto 0 110px;
+}
+
+#menu ul{ 
+	width:800px; 
+	margin:0 auto 0 auto ; 
+	list-style:none; 
+	padding:0; 
+	text-align:left;
+}
+
+#menu ul li{
+	display:inline
+}
+
+#menu ul a { 
+	display:block; 
+	float:left; 
+	font-weight:bold; 
+	font-size:13px; 
+	text-decoration:none; 
+	color:#fff; 
+	background:url(images/menu_enactive.gif) no-repeat bottom center; 
+	padding:8px 10px; 
+	width:118px; 
+	text-align:center; 
+	text-transform:uppercase;
+}
+
+#menu ul a:hover { 
+	background:url(images/menu_over.gif) no-repeat bottom center; 
+	color:#232323;
+}
+
+#menu ul a.active { 
+	background:url(images/menu_active.gif) no-repeat bottom center; 
+	color:#232323;
+}
+
+#menu ul a.active:hover { 
+	background:url(images/menu_active.gif) no-repeat bottom center; 
+	color:#232323;
+}
+/*** header ***/
+
+
+/*** main: partie principale du site ***/
+#back_main { 
+	background: url(images/back.jpg); 
+	background-repeat: no-repeat; 
+	background-attachment:scroll; 
+	width:100%; 
+}
+
+#main { 
+	background: #FFFFFF; 
+	width:800px; 
+	min-height: 650px; 
+	margin:0 auto; 
+	padding:20px 0 20px 0; 
+	border-radius: 20px;
+}
+
+#text { 
+	width:700px; 
+	margin: 10px auto; 
+	padding-left:20px;
+}
+/*** main ***/
+
+
+
+/*** footer: pied de page ***/
+#footer {
+	background:url(images/footer_bckg.gif) repeat-x #3f3e3e 0 2px; 
+	min-width: 800px;
+	height:94px; 
+	clear:both;
+}
+
+#left_footer { 
+	float:left; 
+	margin:0 0 0 50px; 
+	padding:40px 0 0 30px; 
+	color:#FFFFFF; 
+	font-weight:bold; 
+	font-size:11px;
+}
+
+#left_footer ul li{ 
+	width:800px; 
+	margin:0 10px 0 auto; 
+	list-style:none; 
+	padding:0; 
+	text-align:left; 
+	display:inline;
+}
+
+#left_footer a { 
+	color:#FFFFFF; 
+	text-decoration: none;
+}
+
+#left_footer a.active { 
+	color:#fe5800;
+}
+
+#left_footer a:hover { 
+	color:#fe5800;
+}
+
+#right_footer { 
+	float:right;  
+	padding: 40px 50px 0 0; 
+	color:#FFFFFF; 
+	font-weight:bold; 
+	font-size:11px; 
+	text-align:right;
+}
+
+#W3C {
+	width: 200px;
+	padding-top: 30px;
+	margin: 0 auto;
+}
+/*** footer ***/
+
+
+
+/*** partie liens ***/
+table#links { 
+	margin-top:25px;
+	text-align: left; 
+}
+
+table#links th { 
+	padding-left: 15px; 
+}
+
+table#links tr td { 
+	width: 350px; 
+	vertical-align: top; 
+	padding-top: 10px; 
+}
+/*** partie liens ***/
+
+
+
+/*** partie CV ***/
+#picCV { 
+	float: right; 
+	height: 150px;
+	padding: 0 25px 0 0;
+}
+
+#objective { 
+	width: 500px;
+	margin-left: 60px;
+	padding: 10px;
+	float: left; 
+	font-family: Georgia, Serif; 
+	font-style: italic;
+	font-size: 13px;
+	color: #666; 
+}
+
+dt { 
+	font-style: italic; 
+	font-weight: bold; 
+	font-size: 16px; 
+	text-align: left; 
+	padding: 0 10px 0 20px; 
+	width: 120px; 
+	float: left; 
+}
+
+dd.list { 
+	width: 600px; 
+	font-family: Calibri; 
+	font-size: 14px;
+	float: left; 
+	padding: 0 0 0 25px;
+	border-left: 1px solid #999;  
+}
+
+ul {
+	margin: 0 0 20px 10px; 
+	list-style-type: circle;
+}
+
+dd.clear { 
+	float: none; 
+	margin: 0; 
+	height: 40px; 
+}
+
+dd div {
+	padding: 0 0 15px 20px; 
+}
+
+* {
+	margin: 0; 
+	padding: 0; 
+}
+
+.clear { 
+	clear: both; 
+}
+
+ul.intern {
+	text-decoration: none;
+	padding: 0 0 0 35px;
+	list-style-type: square;
+}
+
+div.link {
+	text-align:center;
+	font-weight: bold;
+}
+	
+.link  a {
+	text-decoration: none;
+}
+/*** partie CV ***/
+
+
+
+/*** partie galerie d'images ***/
+.miniatures {
+	width: 150px;
+	height: 100px;
+	border: none;
+}
+
+#overlay {
+	display : none; 
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%; height: 100%;
+	text-align: center; 
+	background-color: rgba(0,0,0,0.6);
+}
+
+#carousel {
+	margin: 10px auto 25px auto;
+}
+/*** partie galerie d'images ***/
+
+
+
+/*** partie formulaire ***/
+table#form {
+	margin: 0 auto;
+}
+
+table#form {
+	text-align: left;
+}
+
+table#form tr td {
+	width: 140px;
+	padding: 5px;
+}
+/*** partie formulaire ***/
+

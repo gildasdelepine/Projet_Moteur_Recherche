@@ -1,0 +1,77 @@
+CREATE TABLE meta (
+	id_meta INT NOT NULL AUTO_INCREMENT,
+	media ENUM('Image', 'Audio', 'Video'),
+	note INT,
+	file LONGBLOB,
+	url VARCHAR(50),
+	width INT,
+	height INT,
+	place VARCHAR(10),
+	sdate DATE,
+	descr VARCHAR(500),
+
+	PRIMARY KEY (id_meta),
+	CONSTRAINT UNIQUE (url)
+) ENGINE=INNODB;
+
+CREATE TABLE keywords (
+	id_key INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(50),
+	df INT,
+	PRIMARY KEY (id_key),
+	UNIQUE INDEX ind_nam (name)
+) ENGINE=INNODB;
+
+CREATE TABLE meta_key (
+	id_meta INT NOT NULL,
+	id_key INT NOT NULL,
+	tf INT,
+	FOREIGN KEY (id_meta) REFERENCES meta(id_meta) ON DELETE CASCADE,
+	FOREIGN KEY (id_key) REFERENCES keywords(id_key) ON DELETE CASCADE,
+	weight FLOAT,
+	PRIMARY KEY (id_meta,id_key)
+) ENGINE=INNODB;
+
+CREATE TABLE sign (
+	id_sign INT NOT NULL AUTO_INCREMENT,
+	type VARCHAR(30) NOT NULL,
+	dim INT,
+	data TEXT,
+	PRIMARY KEY (id_sign),
+	INDEX ind_typ (type)
+) ENGINE=INNODB;
+
+CREATE TABLE meta_sign (
+	id_meta INT NOT NULL,
+	id_sign INT NOT NULL,
+	type VARCHAR(30) NOT NULL,
+	FOREIGN KEY (id_meta) REFERENCES meta(id_meta) ON DELETE CASCADE,
+	FOREIGN KEY (id_sign) REFERENCES sign(id_sign) ON DELETE CASCADE,
+	PRIMARY KEY (id_meta,id_sign),
+	INDEX ind_typ (type)
+) ENGINE=INNODB;
+
+CREATE TABLE dist (
+	id_sign1 INT NOT NULL,
+	id_sign2 INT NOT NULL,
+	type VARCHAR(30) NOT NULL,
+	value FLOAT,
+	FOREIGN KEY (id_sign1) REFERENCES sign(id_sign) ON DELETE CASCADE,
+	FOREIGN KEY (id_sign2) REFERENCES sign(id_sign) ON DELETE CASCADE,
+	FOREIGN KEY (type) REFERENCES sign(type) ON DELETE CASCADE,
+	PRIMARY KEY (id_sign1,id_sign2,type)
+) ENGINE=INNODB;
+
+
+
+
+
+CREATE TABLE user (
+  id_user INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  firstname VARCHAR(30) NOT NULL,
+  lastname VARCHAR(30) NOT NULL,
+  email VARCHAR(30) NOT NULL UNIQUE,
+  login VARCHAR(30) NOT NULL UNIQUE,
+  password VARCHAR(30) NOT NULL,
+) ENGINE=INNODB;
+
