@@ -8,8 +8,8 @@
     <title>
       Projet Indexation
     </title>
-    <link rel="stylesheet" href="style.css" type="text/css" title="style"/>
-    <link rel="alternate stylesheet" href="style2.css" type="text/css" title="style2"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css" title="style"/>
+    <link rel="alternate stylesheet" href="css/style2.css" type="text/css" title="style2"/>
     <script type="text/javascript" src="switchStyle.js"></script> 
 </head>
 
@@ -17,15 +17,15 @@
 	<!-- header -->
 	
     <div id="header">
-	<div><img src="images/cat.jpg" alt="Photo of Gully" id="headImg" /></div>
+        <div><img src="images_template/logo_polytech.png" alt="Polytech Marseille" id="headImg" /></div>
     	<div id="title">
-       		<div id="header_left">Gildas DELEPINE</div>
+       		<div id="header_left">Moteur de recherche</div>
 		</div>
 		
         <div id="menu">
         <ul>
-          <li><a href="index.html" class="active">Accueil</a></li>
-          <li><a href="#">Rechercher</a></li>
+          <li><a href="index.php" class="active">Mot-Clé</a></li>
+          <li><a href="#">Feedback</a></li>
           <li><a href="#">Administration</a></li>
           <!--<li><a href="liens.html">Liens</a></li>
           <li><a href="contact.html">Contact</a></li>-->
@@ -40,7 +40,7 @@
 	<div id="main">
     
 	
-        <h2>Recherche d'images</h2>
+        <h2>Recherche par mot-clés</h2>
 		
 		<div id="text">
 			<form action="demo_form.asp">
@@ -63,7 +63,7 @@
               <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>-->
-   		<div id="right_footer">&copy; Copyright 2013 Gildas DELEPINE</div>
+   		<div id="right_footer">&copy; Copyright 2013 Gildas DELEPINE, Marc Lieutaud</div>
 		<div id="W3C">
 			<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"/></a>
 			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"/></a>
