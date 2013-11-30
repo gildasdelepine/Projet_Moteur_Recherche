@@ -1,145 +1,158 @@
 <?php
-session_start();
+    session_start();
 
-/*$BDD = mysql_connect("localhost","root","");  // Connexion à la base de données.
-             mysql_select_db("database");       // Sélection de la base de données utilisée.*/
-include('connexion_bd.php');
-// On met les variables utilisés du script PHP à FALSE.
-$error = FALSE;
+    include('connexion_bd.php');
+    // On met les variables utilisï¿½s du script PHP ï¿½ FALSE.
+    $error = FALSE;
+    $connexionOK = FALSE;
 
-$connexionOK = FALSE;
+    // On regarde si l'utilisateur a bien utilisï¿½ le module de connexion pour traiter les donnï¿½es.
+    if(isset($_POST["connexion"])){
 
-// On regarde si l'utilisateur a bien utilisé le module de connexion pour traiter les données.
-if(isset($_POST["connexion"])){
+       // On regarde si tout les champs sont remplis. Sinon on lui affiche un message d'erreur.
+	if($_POST["login"] == NULL OR $_POST["pass"] == NULL){
+	    $error = TRUE;
+	    $errorMSG = "Vous devez remplir tout les champs !";
+	}
 
-   // On regarde si tout les champs sont remplis. Sinon on lui affiche un message d'erreur.
-   if($_POST["login"] == NULL OR $_POST["pass"] == NULL){
+	// Sinon si tout les champs sont remplis alors on regarde si le nom de compte rentrï¿½ existe bien dans la base de donnï¿½es.
+	else{
 
-      $error = TRUE;
+	    $sql = "SELECT login FROM user WHERE login = '".$_POST["login"]."' ";
 
-      $errorMSG = "Vous devez remplir tout les champs !";
+	    $req = mysql_query($sql);
 
-   }
+	    // Si oui, on continue le script...
+	    if($sql){
 
-   // Sinon si tout les champs sont remplis alors on regarde si le nom de compte rentré existe bien dans la base de données.
-   else{
+		// On sï¿½lectionne toute les donnï¿½es de l'utilisateur dans la base de donnï¿½es.
+		$sql = "SELECT * FROM user WHERE login = '".$_POST["login"]."' ";
+		$req = mysql_query($sql);
 
-      $sql = "SELECT login FROM user WHERE login = '".$_POST["login"]."' ";
+		// Si la requï¿½te SQL c'est bien passï¿½...
+		if($sql){
 
-      $req = mysql_query($sql);
+		    // On rï¿½cupï¿½re toute les donnï¿½es de l'utilisateur dans la base de donnï¿½es.
+		    $donnees = mysql_fetch_assoc($req);
 
-      // Si oui, on continue le script...
-      if($sql){
+		    // Si le mot de passe entrï¿½ ï¿½ la mï¿½me valeur que celui de la base de donnï¿½es, on l'autorise a se connecter...
+		    if($_POST["pass"] == $donnees["password"]){
+		       $connexionOK = TRUE;
+		       //$connexionMSG = "Connexion au site rÃ©ussie. Vous Ãªtes dÃ©sormais connectÃ© !";
+		       $_SESSION["login"] = $_POST["login"];
+		       $_SESSION["pass"] = $_POST["pass"];
 
-         // On sélectionne toute les données de l'utilisateur dans la base de données.
-         $sql = "SELECT * FROM user WHERE login = '".$_POST["login"]."' ";
+		    }
+		    // Sinon on lui affiche un message d'erreur.
+		    else{
+		       $error = TRUE;
+		       $errorMSG = "Nom de compte ou mot de passe incorrect !";
+		    }
+		}
+		// Sinon on lui affiche un message d'erreur.
+		else{
+		    $error = TRUE;
+		    $errorMSG = "Nom de compte ou mot de passe incorrect !";
+		}
+	    }
+	    // Sinon on lui affiche un message d'erreur.
+	    else{
+		$error = TRUE;
+		$errorMSG = "Nom de compte ou mot de passe incorrect !";
+	    }
+       }
+    }
 
-         $req = mysql_query($sql);
+    mysql_close();
 
-         // Si la requête SQL c'est bien passé...
-         if($sql){
+    if(isset($_SESSION["login"]) AND isset($_SESSION["pass"])){
+	header('Location: index.php');
+	//echo '<p style="color:green">Bienvenue <strong>'.$_SESSION["login"].'</strong></p>';
+    } 
 
-            // On récupère toute les données de l'utilisateur dans la base de données.
-            $donnees = mysql_fetch_assoc($req);
+    if($error == TRUE){ echo '<p align="center" style="color:red"><strong>'.$errorMSG.'</strong></p>'; } 
 
-            // Si le mot de passe entré à la même valeur que celui de la base de données, on l'autorise a se connecter...
-            if($_POST["pass"] == $donnees["password"]){
-
-               $connexionOK = TRUE;
-
-               $connexionMSG = "Connexion au site réussie. Vous êtes désormais connecté !";
-
-               $_SESSION["login"] = $_POST["login"];
-
-               $_SESSION["pass"] = $_POST["pass"];
-
-            }
-
-            // Sinon on lui affiche un message d'erreur.
-            else{
-
-               $error = TRUE;
-
-               $errorMSG = "Nom de compte ou mot de passe incorrect !";
-
-            }
-
-         }
-
-         // Sinon on lui affiche un message d'erreur.
-         else{
-
-            $error = TRUE;
-
-            $errorMSG = "Nom de compte ou mot de passe incorrect !";
-
-         }
-
-      }
-
-      // Sinon on lui affiche un message d'erreur.
-      else{
-
-         $error = TRUE;
-
-         $errorMSG = "Nom de compte ou mot de passe incorrect !";
-
-      }
-
-   }
-
-}
-
-mysql_close();
+    if($connexionOK == TRUE){ echo '<p align="center" style="color:green"><strong>'.$connexionMSG.'</strong></p>'; } 
 
 ?>
 
-<?php if(isset($_SESSION["login"]) AND isset($_SESSION["pass"])){
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-   echo '<p style="color:green">Bienvenue <strong>'.$_SESSION["login"].'</strong></p>';
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
-} ?>
+    <head>
+	<meta http-equiv="Content-Type" name="author" content="text/html; charset=utf-8" />
+	<title>
+	  Projet Indexation
+	</title>
+	<link rel="stylesheet" href="style.css" type="text/css" title="style"/>
+	<link rel="alternate stylesheet" href="style2.css" type="text/css" title="style2"/>
+	<script type="text/javascript" src="switchStyle.js"></script> 
+    </head>
 
-<?php if($error == TRUE){ echo '<p align="center" style="color:red"><strong>'.$errorMSG.'</strong></p>'; } ?>
 
-<?php if($connexionOK == TRUE){ echo '<p align="center" style="color:green"><strong>'.$connexionMSG.'</strong></p>'; } ?>
 
-<html>
 
-   <head>
+    <body>
+	    <!-- header -->
 
-      <title>Création d'un formulaire de connexion en HTML</title>
+	<div id="header">
+	    <div><img src="images/cat.jpg" alt="Photo of Gully" id="headImg" /></div>
+	    <div id="title">
+		    <div id="header_center">Moteur de recherche multmÃ©dia</div>
+		    </div>
 
-   </head>
+	    <div id="menu">
+	    <ul>
+	      <li><a href="index.html">Accueil</a></li>
+	      <li><a href="#">Rechercher</a></li>
+	      <li><a href="admin.php" class="active">Administration</a></li>
+	      <!--<li><a href="liens.html">Liens</a></li>
+	      <li><a href="contact.html">Contact</a></li>-->
+	    </ul>
+	    </div>
 
-   <body>
+	</div>
+	<!--end header -->
 
-      <h2>Connexion au site</h2>
+	    <!-- main -->
+	<div id="back_main">
+	    <div id="main">
 
-      <form action="admin.php" method="post">
+		<h2>Connexion</h2>
+		
+		<div id="text">
+		    <form action="admin.php" method="post">
+			<table id="form">
+			    <tr>
+			       <td><label for="login"><strong>Nom de compte</strong></label></td>
+			       <td><input type="text" name="login" id="login"/></td>
+			    </tr>
+			    <tr>
 
-         <table>
-
-            <tr>
-
-               <td><label for="login"><strong>Nom de compte</strong></label></td>
-               <td><input type="text" name="login" id="login"/></td>
-
-            </tr>
-
-            <tr>
-
-               <td><label for="pass"><strong>Mot de passe</strong></label></td>
-               <td><input type="password" name="pass" id="pass"/></td>
-
-            </tr>
-
-         </table>
-
-         <input type="submit" name="connexion" value="Se connecter"/>
-
-      </form>
-
-   </body>
+			       <td><label for="pass"><strong>Mot de passe</strong></label></td>
+			       <td><input type="password" name="pass" id="pass"/></td>
+			    </tr>
+			    <tr>
+				<td><input type="submit" name="connexion" value="Se connecter"/></td>
+			    </tr>
+			</table>
+			
+		    </form>
+		</div>
+	    </div>
+	</div>
+	<!-- end main -->
+	<!-- footer -->
+	<div id="footer">
+	    <div id="right_footer">&copy; Copyright 2013 Gildas DELEPINE</div>
+	    <div id="W3C">
+		<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"/></a>
+		<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"/></a>
+	    </div>
+	</div>
+	<!-- end footer -->
+    </body>
 
 </html>

@@ -49,12 +49,13 @@ p {
 	padding:50px 0 0 0px; 
 }
 
-#header_left{ 
-	color:#FFFFFF; 
+#header_center{ 
+	text-align: center;
+	color:#E00000; 
 	text-decoration:none; 
 	font-weight:bold; 
 	height:12px; 
-	font-size:20px; 
+	font-size:24px; 
 	padding: 0 0 0 70px; 
 }
 
