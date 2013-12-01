@@ -28,7 +28,7 @@
         <ul>
           <li><a href="index.php" class="active">Mot-Clé</a></li>
           <li><a href="#">Feedback</a></li>
-          <li><a href="#">Administration</a></li>
+          <li><a href="connection.php">Administration</a></li>
           <!--<li><a href="liens.html">Liens</a></li>
           <li><a href="contact.html">Contact</a></li>-->
         </ul>
