@@ -10,7 +10,9 @@
     </title>
     <link rel="stylesheet" href="css/style.css" type="text/css" title="style"/>
     <link rel="alternate stylesheet" href="css/style2.css" type="text/css" title="style2"/>
-    <script type="text/javascript" src="switchStyle.js"></script> 
+    <script src="js/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="switchStyle.js"></script>
+    <script type="text/javascript" src="js/searchScript.js"></script>
 </head>
 
 <body>
@@ -43,10 +45,8 @@
         <h2>Recherche par mot-clés</h2>
 		
 		<div id="text">
-			<form action="demo_form.asp">
-				<input type="text" name="terms">
-				<input type="submit" value="Rechercher">
-			</form>
+				<input id="kwString" type="text" name="terms">
+                                    <input id="searchByKW" type="button" value="Rechercher" onclick="kwProcess()">
 		</div>
        					
 	</div>

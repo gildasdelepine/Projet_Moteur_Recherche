@@ -1,4 +1,3 @@
-<META HTTP-EQUIV="Refresh" CONTENT="0;URL=pages/index.html">
 <?php
     //header('Location: pages/index.html');
 /*
@@ -203,4 +202,3 @@ else
 require_once BASEPATH.'core/CodeIgniter.php';
 /* End of file index.php */
 /* Location: ./index.php */
-?>
