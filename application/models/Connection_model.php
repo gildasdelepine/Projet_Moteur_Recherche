@@ -47,5 +47,3 @@ class Connection_model extends Model {
     }
 
 }
-
-?>

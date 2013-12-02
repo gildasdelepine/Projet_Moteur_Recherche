@@ -8,9 +8,14 @@
 function kwProcess(){
     
     var sentence = $('#kwString').val();
-    var tabSentence = sentence.split(" ");
+    var words = sentence.split(" ");
     
-    for(var i = 0; i < tabSentence.length; i++) {
-        // ToDo
-    }
+    $.ajax({
+        type: "GET",
+        url : "application/controllers/welcome.php/getKW",
+        data: { words : words },
+        success:function(msg){
+          alert("completed");
+        }
+    }); 
 }

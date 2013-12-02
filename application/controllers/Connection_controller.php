@@ -22,4 +22,3 @@ class connection extends Controller {
     
 }
 
-?>

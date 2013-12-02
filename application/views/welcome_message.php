@@ -1,89 +1,74 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
-
-	<style type="text/css">
-
-	::selection{ background-color: #E13300; color: white; }
-	::moz-selection{ background-color: #E13300; color: white; }
-	::webkit-selection{ background-color: #E13300; color: white; }
-
-	body {
-		background-color: #fff;
-		margin: 40px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
-
-	a {
-		color: #003399;
-		background-color: transparent;
-		font-weight: normal;
-	}
-
-	h1 {
-		color: #444;
-		background-color: transparent;
-		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
-		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
-	}
-
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
-	}
-
-	#body{
-		margin: 0 15px 0 15px;
-	}
-	
-	p.footer{
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-	
-	#container{
-		margin: 10px;
-		border: 1px solid #D0D0D0;
-		-webkit-box-shadow: 0 0 8px #D0D0D0;
-	}
-	</style>
+    <meta http-equiv="Content-Type" name="author" content="text/html; charset=utf-8" />
+    <title>
+      Projet Indexation
+    </title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" title="style"/>
+    <link rel="alternate stylesheet" href="css/style2.css" type="text/css" title="style2"/>
+    <script src="js/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="switchStyle.js"></script>
+    <script type="text/javascript" src="js/searchScript.js"></script>
 </head>
 
 <body>
-<div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+	<!-- header -->
+	
+    <div id="header">
+        <div><img src="images_template/logo_polytech.png" alt="Polytech Marseille" id="headImg" /></div>
+    	<div id="title">
+       		<div id="header_left">Moteur de recherche</div>
+		</div>
+		
+        <div id="menu">
+        <ul>
+          <li><a href="index.php" class="active">Mot-Clé</a></li>
+          <li><a href="#">Feedback</a></li>
+          <li><a href="connection.php">Administration</a></li>
+          <!--<li><a href="liens.html">Liens</a></li>
+          <li><a href="contact.html">Contact</a></li>-->
+        </ul>
+        </div>
+		
+    </div>
+    <!--end header -->
 
-	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
-
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+	<!-- main -->
+    <div id="back_main">
+	<div id="main">
+    
+	
+        <h2>Recherche par mot-clés</h2>
+		
+		<div id="text">
+				<input id="kwString" type="text" name="terms">
+                                    <input id="searchByKW" type="button" value="Rechercher" onclick="kwProcess()">
+		</div>
+       					
 	</div>
+	</div>
+	<!-- end main -->
+    <!-- footer -->
+	<div id="footer">
+    	<!--<div id="left_footer">
+            <ul>
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="galerie.html">Galerie Photo</a></li>
+              <li><a href="cv.html" class="active">CV</a></li>
+              <li><a href="liens.html">Liens</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>-->
+   		<div id="right_footer">&copy; Copyright 2013 Gildas DELEPINE, Marc Lieutaud</div>
+		<div id="W3C">
+			<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"/></a>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"/></a>
+		</div>
+    </div>
+    <!-- end footer --></body>
 
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
-</div>
-
-</body>
 </html>
