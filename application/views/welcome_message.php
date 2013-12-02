@@ -42,13 +42,26 @@
 	<div id="main">
     
 	
-        <h2>Recherche par mot-clés</h2>
-		
-		<div id="text">
-				<input id="kwString" type="text" name="terms">
-                                    <input id="searchByKW" type="button" value="Rechercher" onclick="kwProcess()">
-		</div>
-       					
+            <h2>Recherche par mot-clés</h2>
+
+            <div id="text">
+                            <input id="kwString" type="text" name="terms">
+                                <input id="searchByKW" type="button" value="Rechercher" onclick="kwProcess()">
+            </div>
+       			
+            <!-- images ici -->
+            
+            <?php
+                if (isset($arrayOccu)){
+                    foreach ($arrayOccu as $arrayImg) {
+            ?>
+            <img src="<?php echo key($arrayImg); ?>">
+            <?php
+                    }
+                }
+            ?>
+        
+        
 	</div>
 	</div>
 	<!-- end main -->

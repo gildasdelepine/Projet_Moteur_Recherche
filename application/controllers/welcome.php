@@ -21,10 +21,6 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
-        
-        public function getKW() {
-           $words = \filter_input("\INPUT_GET", 'words');
-         }
 }
 
 /* End of file welcome.php */

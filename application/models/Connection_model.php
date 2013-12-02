@@ -20,6 +20,7 @@ class Connection_model extends Model {
     {
         // Call the Model constructor
         parent::Model();
+        $this->load->database();
     }
     
     function get_user_login()
@@ -44,6 +45,38 @@ class Connection_model extends Model {
         $this->date    = time();
 
         $this->db->update('entries', $this, array('id' => $_POST['id']));*/
+    }
+    
+    function getMediaFile()
+    {
+        $array = array();
+        $query = $this->db->query('SELECT DISTINCT file FROM media');
+
+        foreach ($query->result() as $row){
+            $array[] = $row->file;
+        }
+        return $array;
+    }
+    
+    function getOccu($words)
+    {
+        $kwOccu = array();
+        $mediaFile = $this->getMediaFile();
+        $query = $this->db->query('SELECT file
+                                   FROM media m, media_keywords mkw, keywords kw
+                                   WHERE m.id_media = mkw.id_media 
+                                        AND mkw.id_keyword = kw.id_keyword
+                                        AND kw.name in('.implode(",", $words).')');
+
+        foreach ($mediaFile as $file){
+            $kwOccu[$file] = 0;
+            foreach ($query->result() as $row){
+                if ($file === $row->file){
+                    $kwOccu[$file]++;
+                }
+            }   
+        }
+        return $kwOccu;
     }
 
 }
