@@ -10,6 +10,18 @@ class FeedBack extends CI_Controller {
     
 	public function index()
 	{
-		$this->load->view('feedbackview');
+		$this->randImg();
 	}
+        
+        public function randImg(){
+            $randomImages = array();
+            $images = glob("images/*.*", GLOB_BRACE);
+            $i = 0;
+            while($i < 6){
+                array_push($randomImages, $images[array_rand($images)]);
+                $i++;
+            }
+            $data['randomImages'] = $randomImages;
+            $this->load->view('feedbackview', $data);
+        }
 }

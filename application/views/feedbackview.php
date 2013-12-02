@@ -46,18 +46,12 @@
 
             <div id="fbButton">
                                 <input id="searchByKW" type="button" value="Valider ma selection" onclick="">
+                                <input id="searchByKW" type="button" value="Autres images" onclick="location.href='<?php echo site_url('feedback') ?>';">
             </div>
        			
             <!-- images ici -->
             
             <?php
-                $randomImages = array();
-                $images = glob("images/*.*", GLOB_BRACE);
-                $i = 0;
-                while($i < 6){
-                    array_push($randomImages, $images[array_rand($images)]);
-                    $i++;
-                }
                 foreach($randomImages as $image){
                     echo '<img class="rdmImg" src="'.base_url().$image.'">';
                 } 

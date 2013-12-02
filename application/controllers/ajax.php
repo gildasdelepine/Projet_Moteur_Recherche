@@ -24,6 +24,7 @@ class Ajax  extends CI_Controller {
         $words = \filter_input("\INPUT_GET", 'words');   
         $arrayOccu = $this->Connection_model->getOccu($words);
         asort($arrayOccu);
-        $this->load->view('welcome_message', $arrayOccu);
+        $data['arrayOccu'] = $arrayOccu;
+        $this->load->view('welcome_message', $data);
     }
 }
