@@ -147,6 +147,11 @@ p {
 	margin: 10px auto; 
 	padding-left:20px;
 }
+
+#fbButton { 
+	margin: 10px auto; 
+	padding-left:20px;
+}
 /*** main ***/
 
 
@@ -343,4 +348,11 @@ table#form tr td {
 	padding: 5px;
 }
 /*** partie formulaire ***/
+
+.rdmImg {
+    width: 225px;
+    height: 225px;
+    margin: 10px auto; 
+    padding-left:20px;
+}
 

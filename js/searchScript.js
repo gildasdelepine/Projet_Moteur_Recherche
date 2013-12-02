@@ -14,8 +14,8 @@ function kwProcess(){
         type: "GET",
         url : "application/controllers/ajax.php/getKW",
         data: { words : words },
-        success:function(msg){
-          alert("completed");
-        }
+//        success:function(msg){
+//          alert("completed");
+//        }
     }); 
 }

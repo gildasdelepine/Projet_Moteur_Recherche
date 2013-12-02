@@ -8,25 +8,25 @@
     <title>
       Projet Indexation
     </title>
-    <link rel="stylesheet" href="css/style.css" type="text/css" title="style"/>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css" type="text/css" title="style"/>
     <link rel="alternate stylesheet" href="css/style2.css" type="text/css" title="style2"/>
-    <script src="js/jquery-2.0.3.js"></script>
+    <script src="<?php echo base_url(); ?>js/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="switchStyle.js"></script>
-    <script type="text/javascript" src="js/searchScript.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/searchScript.js"></script>
 </head>
 
 <body>
 	<!-- header -->
 	
     <div id="header">
-        <div><img src="images_template/logo_polytech.png" alt="Polytech Marseille" id="headImg" /></div>
+        <div><img src="<?php echo base_url(); ?>images_template/logo_polytech.png" alt="Polytech Marseille" id="headImg" /></div>
     	<div id="title">
        		<div id="header_left">Moteur de recherche</div>
 		</div>
 		
         <div id="menu">
         <ul>
-          <li><a href="index.php" class="active">Mot-Clé</a></li>
+          <li><a href="<?php echo base_url(); ?>index.php" class="active">Mot-Clé</a></li>
           <li><a href="<?php echo site_url('feedback') ?>">Feedback</a></li>
           <li><a href="connection.php">Administration</a></li>
           <!--<li><a href="liens.html">Liens</a></li>
@@ -42,23 +42,25 @@
 	<div id="main">
     
 	
-            <h2>Recherche par mot-clés</h2>
+            <h2>Recherche par feedback</h2>
 
-            <div id="text">
-                            <input id="kwString" type="text" name="terms">
-                                <input id="searchByKW" type="button" value="Rechercher" onclick="kwProcess()">
+            <div id="fbButton">
+                                <input id="searchByKW" type="button" value="Valider ma selection" onclick="">
             </div>
        			
             <!-- images ici -->
             
             <?php
-                if (isset($arrayOccu)){
-                    foreach ($arrayOccu as $arrayImg) {
-            ?>
-            <img src="<?php echo key($arrayImg); ?>">
-            <?php
-                    }
+                $randomImages = array();
+                $images = glob("images/*.*", GLOB_BRACE);
+                $i = 0;
+                while($i < 6){
+                    array_push($randomImages, $images[array_rand($images)]);
+                    $i++;
                 }
+                foreach($randomImages as $image){
+                    echo '<img class="rdmImg" src="'.base_url().$image.'">';
+                } 
             ?>
         
         
@@ -67,15 +69,6 @@
 	<!-- end main -->
     <!-- footer -->
 	<div id="footer">
-    	<!--<div id="left_footer">
-            <ul>
-              <li><a href="index.html">Accueil</a></li>
-              <li><a href="galerie.html">Galerie Photo</a></li>
-              <li><a href="cv.html" class="active">CV</a></li>
-              <li><a href="liens.html">Liens</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>-->
    		<div id="right_footer">&copy; Copyright 2013 Gildas DELEPINE, Marc Lieutaud</div>
 		<div id="W3C">
 			<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"/></a>
