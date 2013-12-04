@@ -10,16 +10,16 @@
  *
  * @author GIZOU
  */
-class Connection_model extends Model {
+class Connection_model extends CI_Model {
     //put your code here
-    var $title   = '';
+    /*var $title   = '';
     var $content = '';
-    var $date    = '';
+    var $date    = '';*/
 
     function Connection_model()
     {
         // Call the Model constructor
-        parent::Model();
+        parent::__construct();
         $this->load->database();
     }
     

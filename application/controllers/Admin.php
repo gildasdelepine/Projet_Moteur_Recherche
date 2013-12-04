@@ -6,17 +6,17 @@
  */
 
 /**
- * Description of connection
+ * Description of Admin_controller
  *
  * @author GIZOU
  */
-class connection extends CI_Controller {
-    //put your code here
-    
+class Admin extends CI_Controller {
+
     public function index()
     {
 	$this->load->model('Connection_model', '', TRUE);
+        $this->load->view('admin');
     }
-    
 }
 
+?>

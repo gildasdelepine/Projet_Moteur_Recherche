@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    include('connexion_bd.php');
+    //include('connexion_bd.php');
     // On met les variables utilis�s du script PHP � FALSE.
     $error = FALSE;
     $connexionOK = FALSE;
@@ -123,7 +123,7 @@
 		<h2>Connexion</h2>
 		
 		<div id="text">
-		    <form action="admin.php" method="post">
+		    <form action="admin" method="post">
 			<table id="form">
 			    <tr>
 			       <td><label for="login"><strong>Nom de compte</strong></label></td>

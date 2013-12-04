@@ -28,7 +28,7 @@
         <ul>
           <li><a href="index.php" class="active">Mot-Clé</a></li>
           <li><a href="<?php echo site_url('feedback') ?>">Feedback</a></li>
-          <li><a href="connection.php">Administration</a></li>
+          <li><a href="<?php echo site_url('admin') ?>">Administration</a></li>
           <!--<li><a href="liens.html">Liens</a></li>
           <li><a href="contact.html">Contact</a></li>-->
         </ul>
@@ -76,7 +76,7 @@
               <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>-->
-   		<div id="right_footer">&copy; Copyright 2013 Gildas DELEPINE, Marc Lieutaud</div>
+   		<div id="right_footer">&copy; Copyright 2013 Gildas DELEPINE, Marc LIEUTAUD</div>
 		<div id="W3C">
 			<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"/></a>
 			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"/></a>
