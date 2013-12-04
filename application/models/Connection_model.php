@@ -12,9 +12,10 @@
  */
 class Connection_model extends CI_Model {
     //put your code here
-    /*var $title   = '';
-    var $content = '';
-    var $date    = '';*/
+    var $userFirstname   = '';
+    var $userLastname   = '';
+    var $userLogin  = '';
+    var $userMail   = '';
 
     function Connection_model()
     {
@@ -23,21 +24,67 @@ class Connection_model extends CI_Model {
         $this->load->database();
     }
     
-    function get_user_login()
+    function test_user()
     {
-        //$query = $this->db->get('entries', 10);
-        //return $query->result();
+
+        if(!empty($_POST["login"]) && !empty($_POST["pass"]))
+        {
+            $query = $this->db->query("SELECT * FROM user WHERE login = '".$_POST["login"]."' ");
+            $result = $query->row();
+            
+            
+            // Si Login non présent en BDD
+            if(!empty($result) && ($result->password == $_POST["pass"])){                
+                $this->userLogin = $result->login;
+                $this->userFirstname = $result->firstname; 
+                $this->userLastname = $result->lastname; 
+                $this->userMail = $result->email; 
+                return 0;
+            }
+            else {
+                return 2; 
+//                echo "Login ou mot de passe incorrect";             // remplacer par un return errorX;
+            }
+//            return $result;
+        }
+        else if(isset($_POST["login"]))
+        {
+            return 1;
+//            echo "Veuillez remplir tous les champs";
+        }
+        else
+            return -1;
+        
     }
 
-    function get_user_password()
+    function get_userLogin()
     {
-        /*$this->title   = $_POST['title']; // please read the below note
-        $this->content = $_POST['content'];
-        $this->date    = time();
-
-        $this->db->insert('entries', $this);*/
+        return $this->userLogin;
+//        $query = $this->db->query("SELECT login FROM user WHERE login = '".$_POST["login"]."' ");
+//
+//        $this->title   = $_POST['title']; // please read the below note
+//        $this->content = $_POST['content'];
+//        $this->date    = time();
     }
-
+    
+    function get_userFirstname(){
+        return $this->userFirstname;
+    }
+    
+    function get_userLastname(){
+        return $this->userLastname;
+    }
+    
+    function get_userName(){
+        return $this->userFirstname.' '.$this->userLastname;
+    }
+    
+    function get_userMail(){
+        return $this->userMail;
+    }
+    
+    
+    
     function update_entry()
     {
         /*$this->title   = $_POST['title'];

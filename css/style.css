@@ -30,7 +30,12 @@ h2 {
 
 p {
 	margin-bottom: 10px;
-} 
+}
+
+#error {
+    color: #FF0000;
+    text-align: center;
+}
 /*** CSS general ***/
 
 
