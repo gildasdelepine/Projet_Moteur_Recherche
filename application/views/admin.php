@@ -86,40 +86,41 @@
 	<title>
 	  Projet Indexation
 	</title>
-	<link rel="stylesheet" href="style.css" type="text/css" title="style"/>
+        <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css" type="text/css" title="style"/>
 	<link rel="alternate stylesheet" href="style2.css" type="text/css" title="style2"/>
-	<script type="text/javascript" src="switchStyle.js"></script> 
+	<script src="<?php echo base_url(); ?>js/jquery-2.0.3.js"></script>
+        <script type="text/javascript" src="switchStyle.js"></script> 
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/searchScript.js"></script>
     </head>
 
 
 
 
     <body>
-	    <!-- header -->
+	<!-- header -->            
+        <div id="header">
+            <div><img src="<?php echo base_url(); ?>images_template/logo_polytech.png" alt="Polytech Marseille" id="headImg" /></div>
+            <div id="title">
+                <div id="header_left">Moteur de recherche</div>
+            </div>
 
-	<div id="header">
-	    <div><img src="images/cat.jpg" alt="Photo of Gully" id="headImg" /></div>
-	    <div id="title">
-		    <div id="header_center">Moteur de recherche multmédia</div>
-		    </div>
-
-	    <div id="menu">
-	    <ul>
-	      <li><a href="index.html">Accueil</a></li>
-	      <li><a href="#">Rechercher</a></li>
-	      <li><a href="admin.php" class="active">Administration</a></li>
-	      <!--<li><a href="liens.html">Liens</a></li>
-	      <li><a href="contact.html">Contact</a></li>-->
-	    </ul>
-	    </div>
-
-	</div>
+            <div id="menu">
+            <ul>
+                <li><a href="<?php echo base_url(); ?>index.php">Mot-Clé</a></li>
+                <li><a href="<?php echo site_url('feedback') ?>">Feedback</a></li>
+                <li><a href="<?php echo site_url('admin') ?>" class="active">Administration</a></li>
+              <!--<li><a href="liens.html">Liens</a></li>
+              <li><a href="contact.html">Contact</a></li>-->
+            </ul>
+            </div>
+		
+        </div>
 	<!--end header -->
 
 	    <!-- main -->
 	<div id="back_main">
 	    <div id="main">
-
+<!--
 		<h2>Connexion</h2>
 		
 		<div id="text">
@@ -140,18 +141,18 @@
 			</table>
 			
 		    </form>
-		</div>
+		</div> -->
 	    </div>
 	</div>
 	<!-- end main -->
 	<!-- footer -->
 	<div id="footer">
-	    <div id="right_footer">&copy; Copyright 2013 Gildas DELEPINE</div>
-	    <div id="W3C">
-		<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"/></a>
-		<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"/></a>
-	    </div>
-	</div>
+            <div id="right_footer">&copy; Copyright 2013 Gildas DELEPINE, Marc Lieutaud</div>
+            <div id="W3C">
+                <a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"/></a>
+                <a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"/></a>
+            </div>
+        </div>
 	<!-- end footer -->
     </body>
 
