@@ -45,8 +45,8 @@
             <h2>Recherche par mot-clés</h2>
 
             <div id="text">
-                            <input id="kwString" type="text" name="terms">
-                                <input id="searchByKW" type="button" value="Rechercher" onclick="kwProcess()">
+                <input id="kwString" type="text" name="terms"/>
+                <input id="searchByKW" type="button" value="Rechercher" onclick="kwProcess()"/>
             </div>
        			
             <!-- images ici -->

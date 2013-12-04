@@ -63,7 +63,7 @@
        }
     }
 
-    mysql_close();
+    //mysql_close();
 
     if(isset($_SESSION["login"]) AND isset($_SESSION["pass"])){
 	header('Location: index.php');
@@ -87,9 +87,7 @@
 	  Projet Indexation
 	</title>
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css" type="text/css" title="style"/>
-	<link rel="alternate stylesheet" href="style2.css" type="text/css" title="style2"/>
 	<script src="<?php echo base_url(); ?>js/jquery-2.0.3.js"></script>
-        <script type="text/javascript" src="switchStyle.js"></script> 
         <script type="text/javascript" src="<?php echo base_url(); ?>js/searchScript.js"></script>
     </head>
 
@@ -120,7 +118,7 @@
 	    <!-- main -->
 	<div id="back_main">
 	    <div id="main">
-<!--
+
 		<h2>Connexion</h2>
 		
 		<div id="text">
@@ -141,7 +139,7 @@
 			</table>
 			
 		    </form>
-		</div> -->
+		</div> 
 	    </div>
 	</div>
 	<!-- end main -->

@@ -28,7 +28,7 @@
         <ul>
           <li><a href="<?php echo base_url(); ?>index.php">Mot-Clé</a></li>
           <li><a href="<?php echo site_url('feedback') ?>" class="active">Feedback</a></li>
-          <li><a href="connection.php">Administration</a></li>
+          <li><a href="<?php echo site_url('admin') ?>">Administration</a></li>
           <!--<li><a href="liens.html">Liens</a></li>
           <li><a href="contact.html">Contact</a></li>-->
         </ul>
