@@ -11,17 +11,20 @@
  *
  * @author Marc
  */
+
 class Ajax  extends CI_Controller {
     //put your code here
     
     function __construct()
         {
             parent::__construct();
+            $this->load->helper('url');
             $this->load->model('Connection_model');
         }
         
-    public function getKW() {
-        $words = \filter_input("\INPUT_GET", 'words');   
+    public function getKW($words) {
+        echo "<script type='text/javascript'>alert('dadadadada');</script>";
+        $words = filter_input("INPUT_GET", 'words');   
         $arrayOccu = $this->Connection_model->getOccu($words);
         asort($arrayOccu);
         $data['arrayOccu'] = $arrayOccu;

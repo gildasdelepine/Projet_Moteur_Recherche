@@ -13,11 +13,16 @@ class FeedBack extends CI_Controller {
 		$this->randImg();
 	}
         
+        public function test()
+	{
+		echo '<script type="text/javascript">alert("dadadadada");</script>';
+	}
+        
         public function randImg(){
             $randomImages = array();
             $images = glob("images/*.*", GLOB_BRACE);
             $i = 0;
-            while($i < 6){
+            while($i < 12){
                 array_push($randomImages, $images[array_rand($images)]);
                 $i++;
             }

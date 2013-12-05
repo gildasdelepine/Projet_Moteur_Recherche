@@ -13,9 +13,18 @@ function kwProcess(){
     $.ajax({
         type: "GET",
         url : "application/controllers/ajax.php/getKW",
-        data: { words : words },
+        data: { words : words }
 //        success:function(msg){
 //          alert("completed");
 //        }
     }); 
 }
+
+var selectedImg = "";
+
+$( ".randImg" ).click(function() {
+    var alt = $(this).attr("alt");
+    alt = alt.replace("images/","");
+    selectedImg = selectedImg+" "+alt;
+    alert(selectedImg);
+});

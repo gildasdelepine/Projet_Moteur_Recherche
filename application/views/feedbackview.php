@@ -12,7 +12,7 @@
     <link rel="alternate stylesheet" href="css/style2.css" type="text/css" title="style2"/>
     <script src="<?php echo base_url(); ?>js/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="switchStyle.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>js/searchScript.js"></script>
+
 </head>
 
 <body>
@@ -43,17 +43,17 @@
     
 	
             <h2>Recherche par feedback</h2>
-
             <div id="fbButton">
-                                <input id="searchByKW" type="button" value="Valider ma selection" onclick="">
-                                <input id="searchByKW" type="button" value="Autres images" onclick="location.href='<?php echo site_url('feedback') ?>';">
+                                <input  type="button" value="Valider ma selection" onclick="">
+                                <input  type="button" value="Autres images" onclick="location.href='<?php echo site_url('feedback') ?>';">
+                                <input  type="button" value="Reset" onclick="">
             </div>
        			
             <!-- images ici -->
             
             <?php
                 foreach($randomImages as $image){
-                    echo '<img class="rdmImg" src="'.base_url().$image.'">';
+                    echo '<img alt="'.$image.'" class="randImg" src="'.base_url().$image.'">';
                 } 
             ?>
         
@@ -68,7 +68,7 @@
             <a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" height="31" width="88"/></a>
             <a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px" src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="CSS Valide !"/></a>
         </div>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/searchScript.js"></script>
     </div>
     <!-- end footer --></body>
-
 </html>
