@@ -61,7 +61,7 @@
                 }
             ?>
         
-        
+            <div><?php echo $this->session->userdata('userName') ?></div>
 	</div>
 	</div>
 	<!-- end main -->

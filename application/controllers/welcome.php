@@ -21,12 +21,13 @@ class Welcome extends CI_Controller {
         function __construct()
         {
             parent::__construct();
+            $this->load->library('session');      
             $this->load->helper('url');
         }
     
 	public function index()
 	{
-		$this->load->view('welcome_message');
+            $this->load->view('welcome_message');
 	}
 }
 
