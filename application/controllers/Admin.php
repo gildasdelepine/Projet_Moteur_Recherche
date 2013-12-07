@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Admin_controller
  *
@@ -18,12 +13,14 @@ class Admin extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('session');
     }
-        
+       
+    
     public function index()
     {    
 	$this->load->model('Connection_model', '', TRUE);
+        $sessionTest = $this->session->userdata('userLogin');
         
-        if( $this->session->userdata('userName') !== NULL )
+        if( isset($sessionTest) )
             $this->load->view('admin_index');            
         else{
         
@@ -35,7 +32,7 @@ class Admin extends CI_Controller {
                     break;
 
                 case 0:
-                    session_start();
+                    //session_start();
                     $data['userName'] = $this->Connection_model->get_userName();
                     $data['userLogin'] = $this->Connection_model->get_userLogin();
                     $this->session->set_userdata($data);
@@ -53,6 +50,17 @@ class Admin extends CI_Controller {
                     break;
             }
         }
+    }
+    
+    
+    
+    public function deconnexion(){
+        $this->session->unset_userdata('data');
+        $this->session->unset_userdata('userName');
+        $this->session->unset_userdata('userLogin');
+        $this->session->sess_destroy();
+        
+        redirect($this->load->view('welcome_message'));
     }
 }
 

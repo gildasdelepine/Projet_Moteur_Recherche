@@ -12,7 +12,7 @@
  * @author Marc
  */
 
-class Ajax  extends CI_Controller {
+class Ajax {
     //put your code here
     
     function __construct()
@@ -23,7 +23,7 @@ class Ajax  extends CI_Controller {
         }
         
     public function getKW($words) {
-        echo "<script type='text/javascript'>alert('dadadadada');</script>";
+        //echo "<script type='text/javascript'>alert('dadadadada');</script>";
         $words = filter_input("INPUT_GET", 'words');   
         $arrayOccu = $this->Connection_model->getOccu($words);
         asort($arrayOccu);
@@ -31,3 +31,5 @@ class Ajax  extends CI_Controller {
         $this->load->view('welcome_message', $data);
     }
 }
+
+?>

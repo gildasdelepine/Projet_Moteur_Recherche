@@ -50,7 +50,9 @@
 
 		<h3>Bienvenue <?php echo $this->session->userdata('userName') ?></h3>
 		
-		
+                <form method="post" action="admin/deconnexion" >
+                    <input type="submit"  value="Deconnexion" name="btndeconnect" id="btndeconnect" />        
+                </form> 
 	    </div>
 	</div>
 	<!-- end main -->
