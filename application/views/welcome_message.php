@@ -52,16 +52,22 @@
             <!-- images ici -->
             
             <?php
-                if (isset($arrayOccu)){
-                    foreach ($arrayOccu as $arrayImg) {
-            ?>
-            <img src="<?php echo key($arrayImg); ?>">
+              if (isset($arrayOccu)){
+                    foreach ($arrayOccu as $key => $value) {
+                        $i = $key;
+                        $j = $value; 
+                        $base = base_url().'images/';
+                        $src = $base.$i;
+                         echo '<img alt="'.$i.'" class="randImg" src="'.$src.'">'; 
+                         ?>
+                         <img src="<?php echo base_url('images/'.$i.''); ?>" />
             <?php
                     }
-                }
+              }
             ?>
+                          
         
-            <div><?php echo $this->session->userdata('userName') ?></div>
+<!--            <div><?php echo $this->session->userdata('userName') ?></div>-->
 	</div>
 	</div>
 	<!-- end main -->

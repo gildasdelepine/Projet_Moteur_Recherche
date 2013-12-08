@@ -15,7 +15,7 @@ function kwProcess(){
         url : "index.php/ajax/setKW",
         data: { words : words },
         success:function(data){
-          alert(data);
+         // alert(data);
         }
     }); 
 }
