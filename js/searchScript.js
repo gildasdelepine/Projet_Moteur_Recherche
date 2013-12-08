@@ -12,7 +12,7 @@ function kwProcess(){
     
     $.ajax({
         type: "GET",
-        url : "application/controllers/ajax.php/setKW",
+        url : "index.php/ajax/setKW",
         data: { words : words },
         success:function(data){
           alert(data);

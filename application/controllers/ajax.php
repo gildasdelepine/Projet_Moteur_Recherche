@@ -18,21 +18,18 @@
 //        else
 //            echo 'BUG';
         
-class Ajax {
+class Ajax extends CI_Controller {
     //put your code here
     
-    function __construct()
+    public function __construct()
         {
-            parent::__construct();
-            $this->load->helper('url');
-            $this->load->model('Connection_model');
+           parent::__construct();
+           $this->load->helper('url');
+           $this->load->model('Connection_model');
         }
         
     public function setKW() {
-        $array = $_GET['words'];
-        $words = implode(", ", $array);
-        echo $words;
-      //  $words = filter_input("INPUT_GET", 'words');   
+        $words = $_GET['words'];  
         $arrayOccu = $this->Connection_model->getOccu($words);
         asort($arrayOccu);
         $data['arrayOccu'] = $arrayOccu;
