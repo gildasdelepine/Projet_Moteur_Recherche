@@ -33,15 +33,15 @@ class Ajax extends CI_Controller {
         $arrayOccu = $this->Connection_model->getOccu($words);
         asort($arrayOccu);
         $data['arrayOccu'] = $arrayOccu;
-        $this->load->view('welcome_message', $data);
+        echo json_encode($arrayOccu);
+      //  $this->load->view('welcome_message', $data);
     }
 
 
     public function setFB() {
-        //echo "<script type='text/javascript'>alert('dadadadada');</script>";
         $selectedImg = filter_input("INPUT_GET", 'selectedImg');   
         $resultFB = $this->Connection_model->getImgFB($selectedImg);
         $data['resultFB'] = $resultFB;
-        $this->load->view('feedbackview', $data);
+        echo $this->load->view('feedbackview', $data);
     }
 }

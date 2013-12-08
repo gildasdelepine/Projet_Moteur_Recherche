@@ -51,20 +51,7 @@
        			
             <!-- images ici -->
             
-            <?php
-              if (isset($arrayOccu)){
-                    foreach ($arrayOccu as $key => $value) {
-                        $i = $key;
-                        $j = $value; 
-                        $base = base_url().'images/';
-                        $src = $base.$i;
-                         echo '<img alt="'.$i.'" class="randImg" src="'.$src.'">'; 
-                         ?>
-                         <img src="<?php echo base_url('images/'.$i.''); ?>" />
-            <?php
-                    }
-              }
-            ?>
+            <div id="imgResult"></div>
                           
         
 <!--            <div><?php echo $this->session->userdata('userName') ?></div>-->

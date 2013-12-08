@@ -4,18 +4,32 @@
  * and open the template in the editor.
  */
 
+function writeImgKW(data){
+    var finalString = '';
+    var baseImg = window.location.pathname+'images/';
+    var result = $.parseJSON(data);
+    $.each(result, function(k, v) {
+        //display the key and value pair
+        //alert(k + ' is ' + v);
+        finalString = finalString+'<img class="randImg" alt="'+k+'" class="randImg" src="'+baseImg+k+'"> ';
+    });
+        $('#imgResult').empty().html(finalString);
+}
 
 function kwProcess(){
     
     var sentence = $('#kwString').val();
     var words = sentence.split(" ");
     
+    if(sentence === '')
+        $('#imgResult').empty().html('');
+    
     $.ajax({
         type: "GET",
         url : "index.php/ajax/setKW",
         data: { words : words },
         success:function(data){
-         // alert(data);
+           writeImgKW(data);
         }
     }); 
 }
@@ -38,3 +52,7 @@ $( ".randImg" ).click(function() {
     alt = alt.replace("images/","");
     selectedImg = selectedImg+" "+alt;
 });
+
+function jsfunction(){
+    location.reload();
+}
