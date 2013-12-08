@@ -13,10 +13,10 @@ function kwProcess(){
     $.ajax({
         type: "GET",
         url : "application/controllers/ajax.php/setKW",
-        data: { words : words }
-//        success:function(msg){
-//          alert("completed");
-//        }
+        data: { words : words },
+        success:function(data){
+          alert(data);
+        }
     }); 
 }
 

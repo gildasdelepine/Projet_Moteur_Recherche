@@ -11,7 +11,13 @@
  *
  * @author Marc
  */
-
+//$array = $_GET['words'];
+//$words = implode(", ", $array);
+//        if($words != '')
+//            echo $words;
+//        else
+//            echo 'BUG';
+        
 class Ajax {
     //put your code here
     
@@ -23,8 +29,10 @@ class Ajax {
         }
         
     public function setKW() {
-        //echo "<script type='text/javascript'>alert('dadadadada');</script>";
-        $words = filter_input("INPUT_GET", 'words');   
+        $array = $_GET['words'];
+        $words = implode(", ", $array);
+        echo $words;
+      //  $words = filter_input("INPUT_GET", 'words');   
         $arrayOccu = $this->Connection_model->getOccu($words);
         asort($arrayOccu);
         $data['arrayOccu'] = $arrayOccu;
