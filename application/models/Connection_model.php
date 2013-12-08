@@ -108,11 +108,12 @@ class Connection_model extends CI_Model {
     {
         $kwOccu = array();
         $mediaFile = $this->getMediaFile();
+        $words = implode(",", $words);
         $query = $this->db->query('SELECT file
                                    FROM media m, media_keywords mkw, keywords kw
                                    WHERE m.id_media = mkw.id_media 
                                         AND mkw.id_keyword = kw.id_keyword
-                                        AND kw.name in('.implode(",", $words).')');
+                                        AND kw.name in("'.$words.'");');
 
         foreach ($mediaFile as $file){
             $kwOccu[$file] = 0;
@@ -123,6 +124,26 @@ class Connection_model extends CI_Model {
             }   
         }
         return $kwOccu;
+    }
+    
+    function getImgFB($selectedImg){
+        $query = $this->db->query('SELECT file
+                                   FROM media m, media_descriptor md, descriptor d, distance di
+                                   WHERE m.id_media = md.id_media
+                                    AND md.id_descr = d.id_descr
+                                    AND d.id_descr = di.id_descr1 OR d.id_descr = di.id_descr2
+                                    AND di.id_descr1 IN ( SELECT md2.id_descr
+                                                          FROM media m2, media_descriptor md2
+                                                          WHERE m2.id_media = md2.id_media
+                                                            AND m2.file = les images selec )
+                                    OR  di.id_descr2 IN ( SELECT md3.id_descr
+                                                          FROM media m3, media_descriptor md3
+                                                          WHERE m3.id_media = md3.id_media
+                                                          AND m3.file in('.implode(",", $selectedImg).') )
+                                    AND di.value < 1;');
+        
+    
+        return $query;
     }
 
 }

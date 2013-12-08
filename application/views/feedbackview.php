@@ -44,7 +44,7 @@
 	
             <h2>Recherche par feedback</h2>
             <div id="fbButton">
-                                <input  type="button" value="Valider ma selection" onclick="">
+                                <input  type="button" value="Valider ma selection" onclick="fbProcess()">
                                 <input  type="button" value="Autres images" onclick="location.href='<?php echo site_url('feedback') ?>';">
                                 <input  type="button" value="Reset" onclick="">
             </div>
@@ -52,11 +52,16 @@
             <!-- images ici -->
             
             <?php
-                foreach($randomImages as $image){
-                    echo '<img alt="'.$image.'" class="randImg" src="'.base_url().$image.'">';
-                } 
+                if (isset($resultFB)){
+                    foreach ($resultFB as $image) {
+                        echo '<img alt="'.$image.'" class="randImg" src="'.base_url().$image.'">';
+                    }
+                } else {
+                        foreach($randomImages as $image){
+                            echo '<img alt="'.$image.'" class="randImg" src="'.base_url().$image.'">';
+                        } 
+                  }
             ?>
-        
         
 	</div>
     </div>

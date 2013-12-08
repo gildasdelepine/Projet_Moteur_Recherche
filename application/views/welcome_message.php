@@ -51,17 +51,10 @@
        			
             <!-- images ici -->
             
-            <?php
-                if (isset($arrayOccu)){
-                    foreach ($arrayOccu as $arrayImg) {
-            ?>
-            <img src="<?php echo key($arrayImg); ?>">
-            <?php
-                    }
-                }
-            ?>
+            <div id="imgResult"></div>
+                          
         
-            <div><?php echo $this->session->userdata('userName') ?></div>
+<!--            <div><?php echo $this->session->userdata('userName') ?></div>-->
 	</div>
 	</div>
 	<!-- end main -->

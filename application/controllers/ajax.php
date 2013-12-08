@@ -11,25 +11,37 @@
  *
  * @author Marc
  */
-
-class Ajax {
+//$array = $_GET['words'];
+//$words = implode(", ", $array);
+//        if($words != '')
+//            echo $words;
+//        else
+//            echo 'BUG';
+        
+class Ajax extends CI_Controller {
     //put your code here
     
-    function __construct()
+    public function __construct()
         {
-            parent::__construct();
-            $this->load->helper('url');
-            $this->load->model('Connection_model');
+           parent::__construct();
+           $this->load->helper('url');
+           $this->load->model('Connection_model');
         }
         
-    public function getKW($words) {
-        //echo "<script type='text/javascript'>alert('dadadadada');</script>";
-        $words = filter_input("INPUT_GET", 'words');   
+    public function setKW() {
+        $words = $_GET['words'];  
         $arrayOccu = $this->Connection_model->getOccu($words);
         asort($arrayOccu);
         $data['arrayOccu'] = $arrayOccu;
-        $this->load->view('welcome_message', $data);
+        echo json_encode($arrayOccu);
+      //  $this->load->view('welcome_message', $data);
+    }
+
+
+    public function setFB() {
+        $selectedImg = filter_input("INPUT_GET", 'selectedImg');   
+        $resultFB = $this->Connection_model->getImgFB($selectedImg);
+        $data['resultFB'] = $resultFB;
+        echo $this->load->view('feedbackview', $data);
     }
 }
-
-?>
