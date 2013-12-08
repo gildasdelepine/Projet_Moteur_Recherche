@@ -63,6 +63,32 @@ class Admin extends CI_Controller {
         
         redirect($this->load->view('welcome_message'));
     }
+    
+    
+    public function upload(){
+	$fileguid=@$_POST["myuploader"];   
+	if($fileguid)   
+	{   
+	    //get the uploaded file based on GUID   
+	    $mvcfile=$uploader->GetUploadedFile($fileguid);   
+	    if($mvcfile)   
+	    {   
+		//Gets the name of the file.   
+		echo($mvcfile->FileName);   
+		//Gets the temp file path.   
+		echo($mvcfile->FilePath);   
+		//Gets the size of the file.   
+		echo($mvcfile->FileSize);    
+
+		//Copys the uploaded file to a new location.   
+		$mvcfile->CopyTo("/uploads");   
+		//Moves the uploaded file to a new location.   
+		$mvcfile->MoveTo("/uploads");   
+		//Deletes this instance.   
+		$mvcfile->Delete();   
+	    }   
+	}
+    }
 }
 
 ?>
