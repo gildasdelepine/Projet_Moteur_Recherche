@@ -53,6 +53,8 @@
                     <input type="submit"  value="Deconnexion" name="btndeconnect" id="btndeconnect" />        
                 </form>
 		<br/>
+		<input id="deconnect" type="button" value="Deconnecter" onclick="deconnexion()"/>
+
 		
 		<p> Upload commons fileuploader</p>
 		<form method="POST" enctype="multipart/form-data" action="fup.cgi">

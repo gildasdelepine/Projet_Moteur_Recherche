@@ -4,6 +4,17 @@
  * and open the template in the editor.
  */
 
+function deconnexion(){
+    $.ajax({
+        type: "POST",
+        url : "index.php/admin/deconnexion",
+        success:function(data){
+           writeImgKW(data);
+        }
+    });
+}
+
+
 function writeImgKW(data){
     var finalString = '';
     var baseImg = window.location.pathname+'images/';
