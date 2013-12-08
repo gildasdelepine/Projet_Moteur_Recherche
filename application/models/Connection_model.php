@@ -32,7 +32,6 @@ class Connection_model extends CI_Model {
             $query = $this->db->query("SELECT * FROM user WHERE login = '".$_POST["login"]."' ");
             $result = $query->row();
             
-            
             // Si Login non présent en BDD
             if(!empty($result) && ($result->password == $_POST["pass"])){                
                 $this->userLogin = $result->login;

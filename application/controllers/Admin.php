@@ -19,8 +19,9 @@ class Admin extends CI_Controller {
     {    
 	$this->load->model('Connection_model', '', TRUE);
         $sessionTest = $this->session->userdata('userLogin');
-        
-        if( isset($sessionTest) )
+        //echo "TEST !!!!!!!!!!!!!!!!!!!!!!!!    :".$this->session->userdata('session_id');
+	
+        if( !empty($sessionTest) )
             $this->load->view('admin_index');            
         else{
         
