@@ -22,7 +22,7 @@ class Ajax {
             $this->load->model('Connection_model');
         }
         
-    public function getKW($words) {
+    public function setKW() {
         //echo "<script type='text/javascript'>alert('dadadadada');</script>";
         $words = filter_input("INPUT_GET", 'words');   
         $arrayOccu = $this->Connection_model->getOccu($words);
@@ -30,6 +30,13 @@ class Ajax {
         $data['arrayOccu'] = $arrayOccu;
         $this->load->view('welcome_message', $data);
     }
-}
 
-?>
+
+    public function setFB() {
+        //echo "<script type='text/javascript'>alert('dadadadada');</script>";
+        $selectedImg = filter_input("INPUT_GET", 'selectedImg');   
+        $resultFB = $this->Connection_model->getImgFB($selectedImg);
+        $data['resultFB'] = $resultFB;
+        $this->load->view('feedbackview', $data);
+    }
+}

@@ -15,7 +15,7 @@ class FeedBack extends CI_Controller {
         
         public function test()
 	{
-		echo '<script type="text/javascript">alert("dadadadada");</script>';
+		echo '<script type="text/javascript">alert("Test");</script>';
 	}
         
         public function randImg(){

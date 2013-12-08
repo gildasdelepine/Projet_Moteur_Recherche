@@ -12,11 +12,22 @@ function kwProcess(){
     
     $.ajax({
         type: "GET",
-        url : "application/controllers/ajax.php/getKW",
-        data: { words : words },
-        success:function(msg){
-          alert("completed");
-        }
+        url : "application/controllers/ajax.php/setKW",
+        data: { words : words }
+//        success:function(msg){
+//          alert("completed");
+//        }
+    }); 
+}
+
+function fbProcess(){
+    $.ajax({
+        type: "GET",
+        url : "application/controllers/ajax.php/setFB",
+        data: { selectedImg : selectedImg }
+//        success:function(msg){
+//          alert("completed");
+//        }
     }); 
 }
 
@@ -26,5 +37,4 @@ $( ".randImg" ).click(function() {
     var alt = $(this).attr("alt");
     alt = alt.replace("images/","");
     selectedImg = selectedImg+" "+alt;
-    alert(selectedImg);
 });
