@@ -109,7 +109,7 @@ class Connection_model extends CI_Model {
     {
         $kwOccu = array();
         $mediaFile = $this->getMediaFile();
-        $words = implode(",", $words);
+        $words = implode('", "', $words);
         $query = $this->db->query('SELECT file
                                    FROM media m, media_keywords mkw, keywords kw
                                    WHERE m.id_media = mkw.id_media 
@@ -128,7 +128,8 @@ class Connection_model extends CI_Model {
     }
     
     function getImgFB($selectedImg){
-        $query = $this->db->query('SELECT file
+        $result = array();
+        $query = $this->db->query('SELECT file, di.distance
                                    FROM media m, media_descriptor md, descriptor d, distance di
                                    WHERE m.id_media = md.id_media
                                     AND md.id_descr = d.id_descr
@@ -140,11 +141,15 @@ class Connection_model extends CI_Model {
                                     OR  di.id_descr2 IN ( SELECT md3.id_descr
                                                           FROM media m3, media_descriptor md3
                                                           WHERE m3.id_media = md3.id_media
-                                                          AND m3.file in('.implode(",", $selectedImg).') )
-                                    AND di.value < 1;');
+                                                          AND m3.file in("'.implode(",", $selectedImg).'") )
+                                    AND di.value < 1 ORDER BY di.value ASC;');
+        
+           foreach ($query->result() as $row){
+               $result[$row->file] = $row->distance;
+           } 
         
     
-        return $query;
+        return $result;
     }
 
 }

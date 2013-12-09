@@ -7,22 +7,34 @@
 function writeImgKW(data){
     var finalString = '';
     var baseImg = window.location.pathname+'images/';
+    baseImg = baseImg.replace("index.php","");
+    var result = $.parseJSON(data);
+    $.each(result, function(k, v) {
+        //display the key and value pair
+        //alert(k + ' is ' + v);
+        if (v !== 0)
+            finalString = finalString+'<img class="randImg" alt="'+k+'" class="randImg" src="'+baseImg+k+'"> ';
+    });
+    $('#imgResult').empty().html(finalString);
+}
+
+function writeImgFB(data){
+    var finalString = '';
+    var baseImg = window.location.pathname+'images/';
+    baseImg = baseImg.replace("index.php","");
     var result = $.parseJSON(data);
     $.each(result, function(k, v) {
         //display the key and value pair
         //alert(k + ' is ' + v);
         finalString = finalString+'<img class="randImg" alt="'+k+'" class="randImg" src="'+baseImg+k+'"> ';
     });
-        $('#imgResult').empty().html(finalString);
+    $('#imgResult').empty().html(finalString);
 }
 
 function kwProcess(){
     
     var sentence = $('#kwString').val();
     var words = sentence.split(" ");
-    
-    if(sentence === '')
-        $('#imgResult').empty().html('');
     
     $.ajax({
         type: "GET",
@@ -35,22 +47,26 @@ function kwProcess(){
 }
 
 function fbProcess(){
+    
     $.ajax({
         type: "GET",
-        url : "application/controllers/ajax.php/setFB",
-        data: { selectedImg : selectedImg }
-//        success:function(msg){
-//          alert("completed");
-//        }
+        url : "index.php/ajax/setFB",
+        data: { selectedImg : selectedImg },
+        success:function(data){
+          writeImgFB(data);
+        }
     }); 
 }
 
 var selectedImg = "";
 
 $( ".randImg" ).click(function() {
+    $(this).css({
+            border: '2px solid blue'
+       });
     var alt = $(this).attr("alt");
     alt = alt.replace("images/","");
-    selectedImg = selectedImg+" "+alt;
+    selectedImg = selectedImg+alt+" ";
 });
 
 function jsfunction(){

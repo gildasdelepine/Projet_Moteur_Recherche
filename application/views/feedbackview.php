@@ -50,7 +50,7 @@
             </div>
        			
             <!-- images ici -->
-            
+        <div id="imgResult">
             <?php
                 if (isset($resultFB)){
                     foreach ($resultFB as $image) {
@@ -62,6 +62,7 @@
                         } 
                   }
             ?>
+        </div>  
         
 	</div>
     </div>

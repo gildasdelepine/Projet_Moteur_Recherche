@@ -31,17 +31,15 @@ class Ajax extends CI_Controller {
     public function setKW() {
         $words = $_GET['words'];  
         $arrayOccu = $this->Connection_model->getOccu($words);
-        asort($arrayOccu);
-        $data['arrayOccu'] = $arrayOccu;
+        arsort($arrayOccu);
         echo json_encode($arrayOccu);
-      //  $this->load->view('welcome_message', $data);
     }
 
 
     public function setFB() {
-        $selectedImg = filter_input("INPUT_GET", 'selectedImg');   
+        $selectedImg = $_GET['selectedImg'];   
         $resultFB = $this->Connection_model->getImgFB($selectedImg);
-        $data['resultFB'] = $resultFB;
-        echo $this->load->view('feedbackview', $data);
+        asort($resultFB);
+        echo json_encode($resultFB);
     }
 }
