@@ -1,10 +1,9 @@
-<?php
+<?php require_once "application/phpuploader/phpuploader/include_phpuploader.php" ?>   
 
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -52,7 +51,32 @@
 		
                 <form method="post" action="admin/deconnexion" >
                     <input type="submit"  value="Deconnexion" name="btndeconnect" id="btndeconnect" />        
-                </form> 
+                </form>
+		<br/>
+		<input id="deconnect" type="button" value="Deconnecter" onclick="deconnexion()"/>
+
+		
+		<p> Upload commons fileuploader</p>
+		<form method="POST" enctype="multipart/form-data" action="fup.cgi">
+		    File to upload: <input type="file" name="upfile"><br/>
+		    Notes about the file: <input type="text" name="note"><br/>
+		    <br/>
+		    <input type="submit" value="Press"> to upload the file!
+		</form>
+		<br/>
+		
+		<p>php file uploader</p>
+		<form id="form1" method="POST" action="upload">   
+		    <?php   
+			//Step 2: Create Uploader object.   
+			$uploader=new PhpUploader();   
+			//Step 3: Set a unique name to Uploader   
+			$uploader->Name="myuploader";    
+			//Step 4: Render Uploader   
+			$uploader->Render();   
+		    ?>   
+		</form>
+		
 	    </div>
 	</div>
 	<!-- end main -->

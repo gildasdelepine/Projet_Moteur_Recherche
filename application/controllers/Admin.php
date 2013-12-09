@@ -19,8 +19,9 @@ class Admin extends CI_Controller {
     {    
 	$this->load->model('Connection_model', '', TRUE);
         $sessionTest = $this->session->userdata('userLogin');
-        
-        if( isset($sessionTest) )
+        //echo "TEST !!!!!!!!!!!!!!!!!!!!!!!!    :".$this->session->userdata('session_id');
+	
+        if( !empty($sessionTest) )
             $this->load->view('admin_index');            
         else{
         
@@ -61,6 +62,32 @@ class Admin extends CI_Controller {
         $this->session->sess_destroy();
         
         redirect($this->load->view('welcome_message'));
+    }
+    
+    
+    public function upload(){
+	$fileguid=@$_POST["myuploader"];   
+	if($fileguid)   
+	{   
+	    //get the uploaded file based on GUID   
+	    $mvcfile=$uploader->GetUploadedFile($fileguid);   
+	    if($mvcfile)   
+	    {   
+		//Gets the name of the file.   
+		echo($mvcfile->FileName);   
+		//Gets the temp file path.   
+		echo($mvcfile->FilePath);   
+		//Gets the size of the file.   
+		echo($mvcfile->FileSize);    
+
+		//Copys the uploaded file to a new location.   
+		$mvcfile->CopyTo("/uploads");   
+		//Moves the uploaded file to a new location.   
+		$mvcfile->MoveTo("/uploads");   
+		//Deletes this instance.   
+		$mvcfile->Delete();   
+	    }   
+	}
     }
 }
 
