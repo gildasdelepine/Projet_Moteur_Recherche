@@ -128,23 +128,22 @@ class Connection_model extends CI_Model {
     
     function getImgFB($selectedImg){
         $result = array();
-        $query = $this->db->query('SELECT file, di.distance
-                                   FROM media m, media_descriptor md, descriptor d, distance di
-                                   WHERE m.id_media = md.id_media
-                                    AND md.id_descr = d.id_descr
-                                    AND d.id_descr = di.id_descr1 OR d.id_descr = di.id_descr2
-                                    AND di.id_descr1 IN ( SELECT md2.id_descr
-                                                          FROM media m2, media_descriptor md2
-                                                          WHERE m2.id_media = md2.id_media
-                                                            AND m2.file = les images selec )
-                                    OR  di.id_descr2 IN ( SELECT md3.id_descr
-                                                          FROM media m3, media_descriptor md3
-                                                          WHERE m3.id_media = md3.id_media
-                                                          AND m3.file in("'.implode(",", $selectedImg).'") )
-                                    AND di.value < 1 ORDER BY di.value ASC;');
+        $selectedImg = implode('", "', $selectedImg);
+        $query = $this->db->query('SELECT DISTINCT med.file, dist.value
+                                   FROM media med, media_descriptor mdesc, descriptor descr, distance dist
+                                   WHERE med.id_media = mdesc.id_media AND descr.id_descr IN (dist.id_descr1, dist.id_descr2)
+                                   AND (dist.id_descr1 IN (
+                                                           SELECT mdesc.id_descr 
+                                                           FROM media med, media_descriptor mdesc
+                                                           where med.id_media = mdesc.id_media AND med.file IN ("'.$selectedImg.'")
+                                    ) OR dist.id_descr2 IN (
+                                                            SELECT mdesc.id_descr 
+                                                            FROM media med, media_descriptor mdesc
+                                                            where med.id_media = mdesc.id_media AND med.file IN ("'.$selectedImg.'")
+                                    )) AND dist.value < 1;');
         
            foreach ($query->result() as $row){
-               $result[$row->file] = $row->distance;
+               $result[$row->file] = $row->value;
            } 
         
     

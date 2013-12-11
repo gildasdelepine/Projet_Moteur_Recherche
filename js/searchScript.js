@@ -31,8 +31,7 @@ function writeImgKW(data){
 
 function writeImgFB(data){
     var finalString = '';
-    var baseImg = window.location.pathname+'images/';
-    baseImg = baseImg.replace("index.php","");
+    var baseImg = 'http://127.0.0.1/Projet_Moteur_Recherche/images/';
     var result = $.parseJSON(data);
     $.each(result, function(k, v) {
         //display the key and value pair
@@ -40,6 +39,16 @@ function writeImgFB(data){
         finalString = finalString+'<img class="randImg" alt="'+k+'" class="randImg" src="'+baseImg+k+'"> ';
     });
     $('#imgResult').empty().html(finalString);
+    selectedImg = "";
+    $( ".randImg" ).click(function() {
+        $(this).css({
+                border: '2px solid blue'
+           });
+        var alt = $(this).attr("alt");
+        alt = alt.replace("images/","");
+        selectedImg = selectedImg+alt+" ";
+    });
+    
 }
 
 function kwProcess(){
@@ -58,11 +67,11 @@ function kwProcess(){
 }
 
 function fbProcess(){
-    
+    var words = selectedImg.split(" ");
     $.ajax({
         type: "GET",
-        url : "index.php/ajax/setFB",
-        data: { selectedImg : selectedImg },
+        url : "ajax/setFB",
+        data: { selectedImg : words },
         success:function(data){
           writeImgFB(data);
         }
