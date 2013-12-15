@@ -12,6 +12,7 @@ class Admin extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->library('session');
+
     }
        
     
@@ -19,7 +20,6 @@ class Admin extends CI_Controller {
     {    
 	$this->load->model('Connection_model', '', TRUE);
         $sessionTest = $this->session->userdata('userLogin');
-        //echo "TEST !!!!!!!!!!!!!!!!!!!!!!!!    :".$this->session->userdata('session_id');
 	
         if( !empty($sessionTest) )
             $this->load->view('admin_index');            
@@ -56,12 +56,13 @@ class Admin extends CI_Controller {
     
     
     public function deconnexion(){
+	$this->load->view('welcome_message');
         $this->session->unset_userdata('data');
         $this->session->unset_userdata('userName');
         $this->session->unset_userdata('userLogin');
         $this->session->sess_destroy();
         
-        redirect($this->load->view('welcome_message'));
+//        redirect($this->load->view('welcome_message'));
     }
     
     

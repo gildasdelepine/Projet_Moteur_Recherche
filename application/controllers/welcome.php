@@ -27,8 +27,6 @@ class Welcome extends CI_Controller {
     
 	public function index()
 	{
-	            echo "TEST !!!!!!!!!!!!!!!!!!!!!!!!    :".$this->session->userdata('session_id');
-
             $this->load->view('welcome_message');
 	}
 }

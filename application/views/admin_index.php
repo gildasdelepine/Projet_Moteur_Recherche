@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css" type="text/css" title="style"/>
 	<script src="<?php echo base_url(); ?>js/jquery-2.0.3.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/searchScript.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-2.0.3.js"></script>
     </head>
 
 
@@ -53,8 +54,11 @@
                     <input type="submit"  value="Deconnexion" name="btndeconnect" id="btndeconnect" />        
                 </form>
 		<br/>
-		<input id="deconnect" type="button" value="Deconnecter" onclick="deconnexion()"/>
-
+		<!--<input id="deconnect" type="button" value="Deconnecter" onclick="deconnexion()"/>-->
+		<br/>
+		<form method="post" action="upload" >
+                    <input type="submit"  value="upload" name="charger" id="btndeconnect" />        
+                </form>
 		
 		<p> Upload commons fileuploader</p>
 		<form method="POST" enctype="multipart/form-data" action="fup.cgi">
@@ -62,20 +66,28 @@
 		    Notes about the file: <input type="text" name="note"><br/>
 		    <br/>
 		    <input type="submit" value="Press"> to upload the file!
-		</form>
+		</form> 
 		<br/>
+	
 		
-		<p>php file uploader</p>
-		<form id="form1" method="POST" action="upload">   
-		    <?php   
-			//Step 2: Create Uploader object.   
-			$uploader=new PhpUploader();   
-			//Step 3: Set a unique name to Uploader   
-			$uploader->Name="myuploader";    
-			//Step 4: Render Uploader   
-			$uploader->Render();   
-		    ?>   
+<!--		<input type="file" id="file" name="file" size="10"/>
+		<input id="uploadbutton" type="button" value="Upload"/>-->
+		
+<!--		<form enctype="multipart/form-data">
+		    <input name="file" type="file" />
+		    <input type="button" value="UploadBtn" />
 		</form>
+		<progress></progress>
+		
+		<br/>
+		<br/>
+		<span>Comment ça marche</span>
+		
+		<form method="post" action="[votre fichier PHP pour l'upload.php]" enctype="multipart/form-data">     
+		    <input type="hidden" name="MAX_FILE_SIZE" value="2097152">     
+		    <input type="file" name="nom_du_fichier">    
+		    <input type="submit" value="Envoyer">    
+		</form>-->
 		
 	    </div>
 	</div>
