@@ -7,7 +7,7 @@
 <?php echo $error;?>
 
 <?php echo form_open_multipart('upload/do_upload');?>
-
+    <p>Selectionnez une archive ZIP: </p>
 <input type="file" name="userfile" size="20" />
 
 <br /><br />
