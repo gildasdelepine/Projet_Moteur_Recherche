@@ -17,6 +17,8 @@ if($fileguid)
         //Gets the size of the file.   
         echo($mvcfile->FileSize);    
            
+        
+        
         //Copys the uploaded file to a new location.   
         $mvcfile->CopyTo("/uploads");   
         //Moves the uploaded file to a new location.   
