@@ -37,7 +37,7 @@ class Upload extends CI_Controller {
     public function extract_file($file_name, $raw_name) {
         $this->load->library('unzip');
         $this->unzip->allow(array('css', 'js', 'png', 'gif', 'jpeg', 'jpg', 'tpl', 'html', 'swf'));
-        $this->unzip->extract('./images/zip/' . $file_name, './' . $raw_name);
+        $this->unzip->extract('images/zip/' . $file_name, 'images/' . $raw_name);
         //unlink('./images/zip/' . $file_name);
         $this->meta_processing($raw_name);
     }
