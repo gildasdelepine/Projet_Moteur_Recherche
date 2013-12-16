@@ -5,6 +5,7 @@ class Upload extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->helper(array('form', 'url'));
+        $this->load->model('Connection_model');
     }
 
     public function index() {
@@ -36,20 +37,24 @@ class Upload extends CI_Controller {
     public function extract_file($file_name, $raw_name) {
         $this->load->library('unzip');
         $this->unzip->allow(array('css', 'js', 'png', 'gif', 'jpeg', 'jpg', 'tpl', 'html', 'swf'));
-        $this->unzip->extract('./images/zip/' . $file_name, './images/' . $raw_name);
+        $this->unzip->extract('./images/zip/' . $file_name, './' . $raw_name);
         //unlink('./images/zip/' . $file_name);
         $this->meta_processing($raw_name);
     }
 
     public function meta_processing($raw_name) {
         // TO DO
-        $imgPath = './images/' . $raw_name;
-        $images = glob($imgPath, GLOB_BRACE);
+        $imgPath = 'images/' . $raw_name.'/';
+        $images = glob($imgPath."*.*", GLOB_BRACE);
+        $healthy = array($imgPath, ".jpg");
+        $yummy   = array("", "");
 
         foreach ($images as &$imgName) {
-            $fileName = $raw_name . '/' . $imgName;
-            $keywords = split("+", $imgName);
+            $fileName = substr($imgName, 7);
+            $tmp = str_replace($healthy, $yummy, $imgName);
+            $keywords = explode("+", $tmp);
             // TO DO --> Sending to DB.
+            $this->Connection_model->setImg($fileName, $keywords);
         }
         unset($imgName);
     }

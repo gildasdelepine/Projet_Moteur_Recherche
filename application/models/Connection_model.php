@@ -149,5 +149,20 @@ class Connection_model extends CI_Model {
     
         return $result;
     }
+    
+    function setImg($fileName, $keywords){
+        $this->db->query('INSERT INTO media (file) VALUES("'.$fileName.'");');
+        $query_id_media = $this->db->query('SELECT id_media FROM media WHERE file = "'.$fileName.'";');
+        $row = $query_id_media->row();
+        $id_media = $row->id_media;
+        
+        foreach ($keywords as $kw){
+        $this->db->query('INSERT INTO keywords (name) VALUES("'.$kw.'");');
+        $query_id_keyword = $this->db->query('SELECT id_keyword FROM keywords WHERE name = "'.$kw.'";');
+        $row2 = $query_id_keyword->row();
+        $id_keyword = $row2->id_keyword;
+        $this->db->query('INSERT INTO media_keywords (id_media, id_keyword) VALUES("'.$id_media.'", "'.$id_keyword.'");');
+        }
+    }
 
 }
