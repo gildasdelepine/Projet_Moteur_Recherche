@@ -108,12 +108,12 @@ class Connection_model extends CI_Model {
     {
         $kwOccu = array();
         $mediaFile = $this->getMediaFile();
-        $words = implode('", "', $words);
+        $words = implode('|', $words);
         $query = $this->db->query('SELECT file
                                    FROM media m, media_keywords mkw, keywords kw
                                    WHERE m.id_media = mkw.id_media 
                                         AND mkw.id_keyword = kw.id_keyword
-                                        AND kw.name in("'.$words.'");');
+                                        AND kw.name REGEXP "'.$words.'";');
 
         foreach ($mediaFile as $file){
             $kwOccu[$file] = 0;
