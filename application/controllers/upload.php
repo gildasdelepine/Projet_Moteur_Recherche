@@ -44,12 +44,16 @@ class Upload extends CI_Controller {
 
     public function meta_processing($raw_name) {
         // TO DO
-        $imgPath = 'images/' . $raw_name.'/';
-        $images = glob($imgPath."*.*", GLOB_BRACE);
+        $imgPath = 'images/' . $raw_name . '/';
+        $images = glob($imgPath . "*.*", GLOB_BRACE);
         $healthy = array($imgPath, ".jpg");
-        $yummy   = array("", "");
-
+        $yummy = array("", "");
+        $healthyForCopy = array($imgPath);
+        $yummyForCopy = array("");
         foreach ($images as &$imgName) {
+            $tmpForCopy = str_replace($healthyForCopy, $yummyForCopy, $imgName);
+            copy($imgName, "E:/wamp/cgi-bin/images/" . $tmpForCopy);
+            copy($imgName, "images/" . $tmpForCopy);
             $fileName = substr($imgName, 7);
             $tmp = str_replace($healthy, $yummy, $imgName);
             $keywords = explode("+", $tmp);
@@ -57,6 +61,23 @@ class Upload extends CI_Controller {
             $this->Connection_model->setImg($fileName, $keywords);
         }
         unset($imgName);
+        $this->fb_processing();
+    }
+
+    public function fb_processing() {
+
+        $folder = "E:/wamp/cgi-bin/images/";
+        $dossier = opendir($folder);
+        $f = fopen("E:/wamp/cgi-bin/index.txt", "w");
+        ftruncate($f,0);
+        while ($Fichier = readdir($dossier)) {
+            if ($Fichier != "." && $Fichier != "..") {
+              //  $nomFichier = $folder . "/" . $Fichier;
+                fwrite($f, $Fichier."\r\n");
+            }
+        }
+        closedir($dossier);
+        redirect("http://localhost/cgi-bin/JavaRun.pl");
     }
 
 }
