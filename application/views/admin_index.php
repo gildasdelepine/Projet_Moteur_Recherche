@@ -48,19 +48,23 @@
 	<div id="back_main">
 	    <div id="main">
 
-		<h3>Bienvenue <?php echo $this->session->userdata('userName') ?></h3>
 		
                 <form method="post" action="admin/deconnexion" >
-                    <input type="submit"  value="Deconnexion" name="btndeconnect" id="btndeconnect" />        
+                    <h3>
+                        Bienvenue <?php echo $this->session->userdata('userName') ?>
+                        <input type="submit"  value="Deconnexion" name="btndeconnect" id="btndeconnect" />
+                    </h3>
                 </form>
 		<br/>
 		<!--<input id="deconnect" type="button" value="Deconnecter" onclick="deconnexion()"/>-->
-		<br/>
-		<form method="post" action="upload" >
-                    <input type="submit"  value="upload" name="charger" id="btndeconnect" />        
-                </form>
 		
-		<p> Upload commons fileuploader</p>
+                <p>
+                    <form method="post" action="upload" >
+                        Télécharger des images :  <input type="submit"  value="upload" name="charger" id="btnupload" />        
+                    </form>
+                </p>
+		
+<!--		<p> Upload commons fileuploader</p>
 		<form method="POST" enctype="multipart/form-data" action="fup.cgi">
 		    File to upload: <input type="file" name="upfile"><br/>
 		    Notes about the file: <input type="text" name="note"><br/>
@@ -69,7 +73,7 @@
 		</form> 
 		<br/>
 	
-		
+		-->
 <!--		<input type="file" id="file" name="file" size="10"/>
 		<input id="uploadbutton" type="button" value="Upload"/>-->
 		
