@@ -12,9 +12,6 @@ class Upload extends CI_Controller {
         $this->load->view('upload_form', array('error' => ' '));
     }
 
-    
-    
-    
 //    function do_upload()
 //	{
 //		$config['upload_path'] = './uploads/';
@@ -38,8 +35,8 @@ class Upload extends CI_Controller {
 //			$this->load->view('upload_success', $data);
 //		}
 //	}	
-    
-    
+
+
     public function do_upload() {
         $config['upload_path'] = './images/zip';
         $config['allowed_types'] = 'zip';
@@ -48,21 +45,22 @@ class Upload extends CI_Controller {
         $config['max_height'] = '1080';
 
         $this->load->library('upload', $config);
-        echo $this->upload->data('file_ext');
-        
-        if($this->upload->data('file_ext') == ".zip")
-            echo " c'est un ZIP !!";
-        else
-            echo " c'est une IMAGE !!";
-        
         if (!$this->upload->do_upload()) {
+
             $error = array('error' => 'Ce fichier n est pas un zip !'/* $this->upload->display_errors() */);
+
             $this->load->view('upload_form', $error);
         } else {
-            //$data = array('upload_data' => $this->upload->data());
-            //$upload_data = $data['upload_data'];
 
-            //$this->extract_file($upload_data['file_name'], $upload_data['raw_name']);
+            $data = array('upload_data' => $this->upload->data());
+
+            $upload_data = $data['upload_data'];
+
+
+
+            $this->extract_file($upload_data['file_name'], $upload_data['raw_name']);
+
+
 
             //$this->load->view('upload_success', $data);
         }
@@ -103,11 +101,11 @@ class Upload extends CI_Controller {
         $folder = "E:/wamp/cgi-bin/images/";
         $dossier = opendir($folder);
         $f = fopen("E:/wamp/cgi-bin/index.txt", "w");
-        ftruncate($f,0);
+        ftruncate($f, 0);
         while ($Fichier = readdir($dossier)) {
             if ($Fichier != "." && $Fichier != "..") {
-              //  $nomFichier = $folder . "/" . $Fichier;
-                fwrite($f, $Fichier."\r\n");
+                //  $nomFichier = $folder . "/" . $Fichier;
+                fwrite($f, $Fichier . "\r\n");
             }
         }
         closedir($dossier);
