@@ -84,6 +84,28 @@ class Connection_model extends CI_Model {
     
     
     
+    function addUser(){
+        
+        if(!empty($_POST["login"]) && !empty($_POST["pass"]) && !empty($_POST["firstname"])&& !empty($_POST["lastname"]))
+        {
+           
+            if( !empty($_POST["mail"]) )
+                $this->db->query('INSERT INTO user (firstname, lastname, email, login, password) 
+                              VALUES("'.$_POST["firstname"].'", "'.$_POST["lastname"].'", "'.$_POST["mail"].'", "'.$_POST["login"].'", "'.$_POST["pass"].'") ;');
+            else
+                $this->db->query('INSERT INTO user (firstname, lastname, login, password) 
+                              VALUES("'.$_POST["firstname"].'", "'.$_POST["lastname"].'", "'.$_POST["login"].'", "'.$_POST["pass"].'") ;');
+           
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+    
+    
+    
     function update_entry()
     {
         /*$this->title   = $_POST['title'];
