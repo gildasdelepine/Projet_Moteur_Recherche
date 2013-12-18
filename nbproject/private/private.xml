@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/wamp/www/Projet_Moteur_Recherche/application/controllers/Connection_controller.php</file>
-            <file>file:/E:/wamp/www/Projet_Moteur_Recherche/application/controllers/ajax.php</file>
-            <file>file:/E:/wamp/www/Projet_Moteur_Recherche/application/views/upload_success.php</file>
-            <file>file:/E:/wamp/www/Projet_Moteur_Recherche/application/views/upload_form.php</file>
-            <file>file:/E:/wamp/www/Projet_Moteur_Recherche/application/controllers/Admin.php</file>
-            <file>file:/E:/wamp/www/Projet_Moteur_Recherche/application/controllers/upload.php</file>
-            <file>file:/E:/wamp/www/Projet_Moteur_Recherche/application/controllers/uploadold.php</file>
+            <file>file:/E:/wamp/www/Projet_Moteur_Recherche/application/controllers/feedback.php</file>
+            <file>file:/E:/wamp/www/Projet_Moteur_Recherche/application/models/Connection_model.php</file>
         </group>
     </open-files>
 </project-private>

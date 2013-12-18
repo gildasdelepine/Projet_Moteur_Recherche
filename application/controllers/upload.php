@@ -86,7 +86,8 @@ class Upload extends CI_Controller {
             $tmpForCopy = str_replace($healthyForCopy, $yummyForCopy, $imgName);
             copy($imgName, "E:/wamp/cgi-bin/images/" . $tmpForCopy);
             copy($imgName, "images/" . $tmpForCopy);
-            $fileName = substr($imgName, 7);
+            $fileNameTmp = substr($imgName, 7);
+            $fileName = str_replace($raw_name."/", "", $fileNameTmp);
             $tmp = str_replace($healthy, $yummy, $imgName);
             $keywords = explode("+", $tmp);
             // TO DO --> Sending to DB.
