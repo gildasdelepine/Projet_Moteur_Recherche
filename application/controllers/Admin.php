@@ -55,41 +55,60 @@ class Admin extends CI_Controller {
     
     
     
-    public function deconnexion(){
-	$this->load->view('welcome_message');
+    public function createAccount(){
+        $this->load->view('create_account');
+    }
+    
+    
+    public function newUser(){
+        $this->load->model('Connection_model', '', TRUE);
+        $res = $this->Connection_model->addUser();
+        
+        if( $res == 0 )
+            $this->load->view('admin');
+        else
+        {
+            $data['error'] = " Veuillez remplir les champs obligatoires ";
+            $this->load->view('create_account', $data);
+        }
+    }
+    
+    
+    public function deconnect(){
         $this->session->unset_userdata('data');
         $this->session->unset_userdata('userName');
         $this->session->unset_userdata('userLogin');
         $this->session->sess_destroy();
-        
+        $this->index();
+
 //        redirect($this->load->view('welcome_message'));
     }
     
     
-    public function upload(){
-	$fileguid=@$_POST["myuploader"];   
-	if($fileguid)   
-	{   
-	    //get the uploaded file based on GUID   
-	    $mvcfile=$uploader->GetUploadedFile($fileguid);   
-	    if($mvcfile)   
-	    {   
-		//Gets the name of the file.   
-		echo($mvcfile->FileName);   
-		//Gets the temp file path.   
-		echo($mvcfile->FilePath);   
-		//Gets the size of the file.   
-		echo($mvcfile->FileSize);    
-
-		//Copys the uploaded file to a new location.   
-		$mvcfile->CopyTo("/uploads");   
-		//Moves the uploaded file to a new location.   
-		$mvcfile->MoveTo("/uploads");   
-		//Deletes this instance.   
-		$mvcfile->Delete();   
-	    }   
-	}
-    }
+//    public function upload(){
+//	$fileguid=@$_POST["myuploader"];   
+//	if($fileguid)   
+//	{   
+//	    //get the uploaded file based on GUID   
+//	    $mvcfile=$uploader->GetUploadedFile($fileguid);   
+//	    if($mvcfile)   
+//	    {   
+//		//Gets the name of the file.   
+//		echo($mvcfile->FileName);   
+//		//Gets the temp file path.   
+//		echo($mvcfile->FilePath);   
+//		//Gets the size of the file.   
+//		echo($mvcfile->FileSize);    
+//
+//		//Copys the uploaded file to a new location.   
+//		$mvcfile->CopyTo("/uploads");   
+//		//Moves the uploaded file to a new location.   
+//		$mvcfile->MoveTo("/uploads");   
+//		//Deletes this instance.   
+//		$mvcfile->Delete();   
+//	    }   
+//	}
+//    }
 }
 
 ?>

@@ -123,7 +123,7 @@
 		<h2>Connexion</h2>
 		
 		<div id="text">
-		    <form action="admin" method="post">
+		    <form action="" method="post">
 			<table id="form">
                             <?php 
                                 if(isset($error))
@@ -143,6 +143,13 @@
 			</table>
 			
 		    </form>
+                    
+                    <form method="post" action="admin/createAccount" >
+                    <h4>
+                        Pas de compte ?
+                        <input type="submit"  value="Créer un Compte" name="createAccount" id="newuser" />
+                    </h4>
+                    </form>
 		</div> 
 	    </div>
 	</div>

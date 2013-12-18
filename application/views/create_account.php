@@ -1,9 +1,3 @@
-<?php require_once "application/phpuploader/phpuploader/include_phpuploader.php" ?>   
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
@@ -17,7 +11,6 @@
         <link rel="stylesheet" href="<?php echo base_url(); ?>css/style.css" type="text/css" title="style"/>
 	<script src="<?php echo base_url(); ?>js/jquery-2.0.3.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>js/searchScript.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-2.0.3.js"></script>
     </head>
 
 
@@ -36,6 +29,7 @@
                 <li><a href="<?php echo base_url(); ?>index.php">Mot-Clé</a></li>
                 <li><a href="<?php echo site_url('feedback') ?>">Feedback</a></li>
                 <li><a href="<?php echo site_url('admin') ?>" class="active">Administration</a></li>
+                <li><a href="<?php echo site_url('upload') ?>">Upload</a></li>
               <!--<li><a href="liens.html">Liens</a></li>
               <li><a href="contact.html">Contact</a></li>-->
             </ul>
@@ -48,51 +42,43 @@
 	<div id="back_main">
 	    <div id="main">
 
+		<h2>Nouveau compte</h2>
 		
-                <form method="post" action="admin/deconnect" >
-                    <h3>
-                        Bienvenue <?php echo $this->session->userdata('userName') ?>
-                        <input type="submit"  value="Deconnexion" name="btndeconnect" id="btndeconnect" />
-                    </h3>
-                </form>
-		<br/>
-		<!--<input id="deconnect" type="button" value="Deconnecter" onclick="deconnexion()"/>-->
-		
-                <p>
-                    <form method="post" action="upload" >
-                        Télécharger des images :  <input type="submit"  value="upload" name="charger" id="btnupload" />        
-                    </form>
-                </p>
-		
-<!--		<p> Upload commons fileuploader</p>
-		<form method="POST" enctype="multipart/form-data" action="fup.cgi">
-		    File to upload: <input type="file" name="upfile"><br/>
-		    Notes about the file: <input type="text" name="note"><br/>
-		    <br/>
-		    <input type="submit" value="Press"> to upload the file!
-		</form> 
-		<br/>
-	
-		-->
-<!--		<input type="file" id="file" name="file" size="10"/>
-		<input id="uploadbutton" type="button" value="Upload"/>-->
-		
-<!--		<form enctype="multipart/form-data">
-		    <input name="file" type="file" />
-		    <input type="button" value="UploadBtn" />
-		</form>
-		<progress></progress>
-		
-		<br/>
-		<br/>
-		<span>Comment ça marche</span>
-		
-		<form method="post" action="[votre fichier PHP pour l'upload.php]" enctype="multipart/form-data">     
-		    <input type="hidden" name="MAX_FILE_SIZE" value="2097152">     
-		    <input type="file" name="nom_du_fichier">    
-		    <input type="submit" value="Envoyer">    
-		</form>-->
-		
+		<div id="text">
+		    <form action="./newUser" method="post">
+			<table id="form">
+                            <?php 
+                                if(isset($error))
+                                    echo '<p id="error">'.$error.'</p>';
+                            ?>
+			    <tr>
+                                <td><strong>Prénom*</strong></td>
+                                <td><input type="text" name="firstname" id="firstname"/></td>
+			    </tr>
+                            <tr>
+                                <td><strong>Nom*</strong></td>
+                                <td><input type="text" name="lastname" id="lastname"/></td>
+			    </tr>
+                            <tr>
+                                <td><strong>E-mail</strong></td>
+                                <td><input type="text" name="mail" id="mail"/></td>
+			    </tr>
+                            <tr>
+                                <td><strong>Login*</strong></td>
+                                <td><input type="text" name="login" id="login"/></td>
+			    </tr>
+			    <tr>
+                                <td><strong>Mot de passe*</strong></td>
+                                <td><input type="password" name="pass" id="pass"/></td>
+			    </tr>
+			    <tr>
+                                <td><input type="submit" name="create" value="créer"/></td>
+			    </tr>
+			</table>
+                        *: champs obligatoires
+		    </form>
+                   
+		</div> 
 	    </div>
 	</div>
 	<!-- end main -->
