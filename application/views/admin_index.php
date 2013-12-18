@@ -49,7 +49,7 @@
 	    <div id="main">
 
 		
-                <form method="post" action="admin/deconnect" >
+                <form method="post" action="<?php echo site_url('admin/deconnect') ?>" >
                     <h3>
                         Bienvenue <?php echo $this->session->userdata('userName') ?>
                         <input type="submit"  value="Deconnexion" name="btndeconnect" id="btndeconnect" />
@@ -59,7 +59,7 @@
 		<!--<input id="deconnect" type="button" value="Deconnecter" onclick="deconnexion()"/>-->
 		
                 <p>
-                    <form method="post" action="upload" >
+                    <form method="post" action="<?php echo site_url('upload') ?>" >
                         Télécharger des images :  <input type="submit"  value="upload" name="charger" id="btnupload" />        
                     </form>
                 </p>

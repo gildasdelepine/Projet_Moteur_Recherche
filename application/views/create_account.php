@@ -45,7 +45,7 @@
 		<h2>Nouveau compte</h2>
 		
 		<div id="text">
-		    <form action="./newUser" method="post">
+		    <form action="<?php echo site_url('admin/newUser') ?>" method="post">
 			<table id="form">
                             <?php 
                                 if(isset($error))

@@ -123,7 +123,7 @@
 		<h2>Connexion</h2>
 		
 		<div id="text">
-		    <form action="" method="post">
+		    <form action="<?php echo site_url('admin') ?>" method="post">
 			<table id="form">
                             <?php 
                                 if(isset($error))
@@ -144,7 +144,7 @@
 			
 		    </form>
                     
-                    <form method="post" action="admin/createAccount" >
+                    <form method="post" action="<?php echo site_url('admin/createAccount')?>" >
                     <h4>
                         Pas de compte ?
                         <input type="submit"  value="Créer un Compte" name="createAccount" id="newuser" />
