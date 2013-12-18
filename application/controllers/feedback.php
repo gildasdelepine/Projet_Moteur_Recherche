@@ -16,7 +16,7 @@ class FeedBack extends CI_Controller {
     }
 
     public function setMajDb() {
-	$this->load->model('Connection_model', '', TRUE);
+        $this->load->model('Connection_model', '', TRUE);
 
         $indexTxt = fopen('E:/wamp/cgi-bin/index.txt', 'r');
         $distanceTxt = fopen('E:/wamp/cgi-bin/color.dist', 'r'); // Possibilité de changer entre color.dist et edge.dist.
@@ -27,7 +27,9 @@ class FeedBack extends CI_Controller {
             while (!feof($indexTxt) && !feof($distanceTxt)) {
                 $indice = fgets($indexTxt);
                 $valDist = fgets($distanceTxt);
-                $distanceTab[$indice] = $valDist;
+                if ($valDist != FALSE) {
+                    $distanceTab[$indice] = $valDist;
+                }
             }
             fclose($distanceTxt);
             fclose($indexTxt);

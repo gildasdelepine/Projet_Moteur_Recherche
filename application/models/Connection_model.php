@@ -192,12 +192,12 @@ class Connection_model extends CI_Model {
         $distanceTabWithIndex = array_values($distanceTab);
 
         foreach ($distanceTab as $fileName1 => $strDist) {
-
-            $query_id_media1 = $this->db->query('SELECT id_media FROM media WHERE file = "' . $fileName1 . '";');
+ 
+            $query_id_media1 = $this->db->query('SELECT id_media FROM media WHERE file = "' . trim($fileName1) . '";');
             $row_id_media1 = $query_id_media1->row();
             $id_media1 = $row_id_media1->id_media;
 
-            $query_id_descr1 = $this->db->query('SELECT id_descr FROM media_descriptor WHERE id_media = "' . $id_media1 . '";');
+            $query_id_descr1 = $this->db->query('SELECT id_descr FROM media_descriptor WHERE id_media = ' . intval($id_media1) . ';');
             $row_id_descr1 = $query_id_descr1->row();
             $id_descr1 = $row_id_descr1->id_descr;
 
@@ -207,17 +207,17 @@ class Connection_model extends CI_Model {
                 //TO DO: SQL
 
 
-                $query_id_media2 = $this->db->query('SELECT id_media FROM media WHERE file = "' . $fileName2 . '";');
+                $query_id_media2 = $this->db->query('SELECT id_media FROM media WHERE file = "' . trim($fileName2) . '";');
                 $row_id_media2 = $query_id_media2->row();
                 $id_media2 = $row_id_media2->id_media;
 
-                $query_id_descr2 = $this->db->query('SELECT id_descr FROM media_descriptor WHERE nid_media = "' . $id_media2 . '";');
+                $query_id_descr2 = $this->db->query('SELECT id_descr FROM media_descriptor WHERE id_media = ' . intval($id_media2) . ';');
                 $row_id_descr2 = $query_id_descr2->row();
                 $id_descr2 = $row_id_descr2->id_descr;
                 
                 
                 
-                $this->db->query('INSERT INTO distance (id_descr1, id_descr2, value) VALUES("' . $id_descr1 . '", "'. $id_descr2 . '", "'.$valueDist.'");');
+                $this->db->query('INSERT INTO distance (id_descr1, id_descr2, value) VALUES(' . intval($id_descr1) . ', '. intval($id_descr2) . ', '.$valueDist.');');
                 
                 
                 
