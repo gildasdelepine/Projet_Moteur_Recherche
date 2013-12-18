@@ -29,12 +29,13 @@ class FeedBack extends CI_Controller {
                 $valDist = fgets($distanceTxt);
                 if ($valDist != FALSE) {
                     $distanceTab[$indice] = $valDist;
+                    $nameTab[] = $indice;
                 }
             }
             fclose($distanceTxt);
             fclose($indexTxt);
         }
-        $this->Connection_model->setImgDist($distanceTab);
+        $this->Connection_model->setImgDist($distanceTab, $nameTab);
         $this->randImg();
     }
 
@@ -42,12 +43,14 @@ class FeedBack extends CI_Controller {
         $randomImages = array();
         $images = glob("images/*.*", GLOB_BRACE);
         $i = 0;
-        while ($i < 12) {
-            array_push($randomImages, $images[array_rand($images)]);
-            $i++;
+        if (count($images) != 0) {
+            while ($i < 12) {
+                array_push($randomImages, $images[array_rand($images)]);
+                $i++;
+            }
+            $data['randomImages'] = $randomImages;
+            $this->load->view('feedbackview', $data);
         }
-        $data['randomImages'] = $randomImages;
-        $this->load->view('feedbackview', $data);
     }
 
 }
